@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.HomePage;
 
+import static constants.Constants.MAFAO_URL;
 import static junit.framework.TestCase.assertEquals;
 public class Home_Steps {
     private HomePage homePage;
@@ -18,7 +19,7 @@ public class Home_Steps {
 
     @Given("The user access to MAFAO homepage")
     public void theUserAccessToMAFAOHomepage() {
-        homePage.visit("https://odoo-staging.jips.io/");
+        homePage.visit(MAFAO_URL);
     }
 
     @When("The user clicks on User icon")
@@ -28,7 +29,7 @@ public class Home_Steps {
 
     @Then("The user is on Login Page")
     public void theUserIsOnLoginPage() {
-        assertEquals(homePage.getCurrentUrl(),"https://odoo-staging.jips.io/web/login");
+        assertEquals(homePage.getCurrentUrl(),MAFAO_URL+"web/login");
     }
 
 }

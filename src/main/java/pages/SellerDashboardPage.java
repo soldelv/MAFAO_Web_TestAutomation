@@ -19,8 +19,9 @@ public class SellerDashboardPage extends BasePage{
     private WebElement datamenu_LogOut;
 
 
-    public String checkIsInSellerDashboard(){
+    public String checkIsInSellerDashboard() throws InterruptedException {
         String message = "Seller Dashboard not found";
+        Thread.sleep(1000);
         if(isDisplayed(dashboardTitle)){message = "Seller Dashboard displayed";}
         return message;
     }

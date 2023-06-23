@@ -18,7 +18,7 @@ public class SellerDashboard_Steps {
 
 
     @And("The user is on the Seller Dashboard page")
-    public void theUserIsOnTheSellerDashboardPage() {
+    public void theUserIsOnTheSellerDashboardPage() throws InterruptedException {
         assertEquals("Seller Dashboard displayed",sellerDashboardPage.checkIsInSellerDashboard());
 
     }

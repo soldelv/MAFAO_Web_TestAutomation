@@ -1,3 +1,4 @@
+@test-set:regression
 Feature: Login flows in MAFAO
   It also contains login features with Keyloack
 

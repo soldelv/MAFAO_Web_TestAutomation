@@ -1,16 +1,17 @@
 package constants;
 
+import utils.ConfigReader;
+
+import java.io.FileInputStream;
+import java.util.Properties;
+
 public class Constants {
     public static final int EXPLICIT_WAIT = 10;
 
     public static final String YES = "yes";
     public static final String NO = "no";
 
-    public static final String PROJECT_NAME = "Automation Test Suite Report - Master Selenium Framework - BDD Cucumber";
-
-    /* PARAMETERS TO BE USED FROM MAVEN COMMAND LINE */
-    public static final String PARAMETER_ENV = "env";
-    public static final String PARAMETER_BROWSER = "browser";
+    public static final String PROJECT_NAME = "Automation Test Suite Report - MAFAO - Web";
 
     /* SUPPORTED BROWSERS */
     public static final String BROWSER_CHROME = "chrome";
@@ -27,6 +28,8 @@ public class Constants {
     public static final String ENV_CONFIG_INT = "int_config.properties";
     public static final String ENV_CONFIG_STG = "stg_config.properties";
     public static final String ENV_CONFIG_PROD = "prod_config.properties";
+
+    public static String MAFAO_URL = ConfigReader.getWebpageUrl();
 
     /* CUCUMBER REPORTS */
     public static final String REPORTS_CUCUMBER_LOCATION = "./target/cucumber/";
