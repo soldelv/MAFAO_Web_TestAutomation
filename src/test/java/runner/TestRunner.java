@@ -8,7 +8,9 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "src/test/java/features",
-        glue = "stepdefinitions",
+        glue = "stepsdefinitions",
+
+        tags = {"user-type:admin"},
 
         plugin = {
                 "pretty", "json:target/cucumber-reports/cucumber.json",

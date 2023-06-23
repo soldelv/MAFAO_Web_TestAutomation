@@ -2,7 +2,6 @@ package pages;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -40,7 +39,11 @@ public class BasePage {
     }
 
     public void type(String inputText, WebElement element){
-        element.sendKeys(inputText);
+        if (isDisplayed(element)){element.sendKeys(inputText);}
+        else{
+            System.out.println(element+" IS NOT DISPLAYED");
+        }
+
     }
 
     public void clearAndType(String inputText, WebElement element){
