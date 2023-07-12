@@ -13,7 +13,6 @@ public class HooksSteps {
     private static AppiumDriver driver;
     @Before
     public void driverSetUp() throws MalformedURLException, URISyntaxException {
-        //driver = AndroidDriverFactory.initializeAndroidDriver();
         driver = iOSDriverFactory.initializeIOSDriver();
     }
 
