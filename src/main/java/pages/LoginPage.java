@@ -27,11 +27,10 @@ public class LoginPage extends BasePage {
 
     /* KEY PATH LOCATORS */
     By keypathDelete = MobileBy.AccessibilityId("keypad-delete");
-    By androidAllowNotificationsBtn = MobileBy.xpath("//android.widget.Button[contains(@resource-id, 'permission_allow_button')]");
-    By androidDenyNotificationsBtn = MobileBy.xpath("//android.widget.Button[contains(@resource-id, 'permission_deny_button')]");
-
+    By deleteBtn = MobileBy.AccessibilityId("Delete");
 
     public void tapOnLoginBtn()  {
+        print("try to click on login");
         tap(loginBtn);
     }
 
@@ -55,30 +54,24 @@ public class LoginPage extends BasePage {
 
     public void enterMobileNumber(String mobileNumber) {
         type(mobileNumber, phoneInput);
-        print("Tapped on Send Code");
         tap(sendCodeBtn);
+        tap(sendCodeBtn);
+        holdOn(1000);
     }
 
     public void enterOTPCode(String countryCode, String mobileNumber) throws Exception {
-        Thread.sleep(1000);
         String full_mobileNumber = countryCode+mobileNumber;
-        print(full_mobileNumber);
         String otpCode = MafaoAPIs.getOTPCode(full_mobileNumber);
-        Thread.sleep(1500);
         print("OTP CODE "+otpCode);
-        type(otpCode, phoneOTPInput);
-        Thread.sleep(1000);
+        type("1", phoneOTPInput);
+        tap(deleteBtn);
+        typeFromKeyboard("", otpCode);
+        tap(getElement(submitBtn));
         tap(getElement(submitBtn));
     }
 
     public void enterSecretCode(String secretCode) {
-        char[] splitSecretCode = secretCode.toCharArray();
-
-        for (char i : splitSecretCode) {
-            By key = MobileBy.AccessibilityId("keypad-"+i);
-            print("Tap "+key);
-            tap(key);
-        }
+        typeFromKeyboard("keypad-", secretCode);
         tap(confirmLoginBtn);
     }
 
@@ -88,16 +81,6 @@ public class LoginPage extends BasePage {
 
     public boolean getErrorLoginMsg() {
         return isDisplayed(getElement(errorLogin));
-    }
-
-    public void allowNotifications()
-    {
-        tap(androidAllowNotificationsBtn);
-    }
-
-    public void denyNotifications()
-    {
-        tap(androidDenyNotificationsBtn);
     }
 
 }

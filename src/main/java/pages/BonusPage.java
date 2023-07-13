@@ -116,11 +116,4 @@ public class BonusPage extends BasePage{
     public void tapOnClose(){
         tap(getElement(actionCloseBtn));
     }
-
-
-
-
-
-
-
 }

@@ -26,7 +26,6 @@ public class LoginSteps {
 
     @When("the user taps on Log in button")
     public void theUserTapsOnLogInButton() {
-        loginPage.allowNotifications();
         loginPage.tapOnLoginBtn();
     }
 
@@ -83,7 +82,6 @@ public class LoginSteps {
 
     @When("^the user enters valid credentials$")
     public void theUserEntersValidCredentials() throws Exception {
-        loginPage.allowNotifications();
         loginPage.tapOnLoginBtn();
         holdOn(1000);
         loginPage.tapOnFlagIcon();
