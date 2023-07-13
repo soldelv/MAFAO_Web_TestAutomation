@@ -11,6 +11,7 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NoSuchElementException;
 
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -65,6 +66,7 @@ public class BasePage {
     }
 
     public void type(String inputText, By locator){
+        print(" TYPING ------- "+inputText);
         getElement(locator).sendKeys(inputText);
         print("Typed on element "+locator);
     }
@@ -98,6 +100,17 @@ public class BasePage {
                 .moveTo(PointOption.point(0, scrollEnd))
                 .release()
                 .perform();
+    }
+
+    public void typeFromKeyboard(String locator, String numberToType){
+        char[] splitNumber = numberToType.toCharArray();
+        print("Split number" + Arrays.toString(splitNumber));
+
+        for (char i : splitNumber) {
+            print("TAP NUMBER --- "+String.valueOf(i));
+            By key = MobileBy.AccessibilityId(String.valueOf(locator+i));
+            tap(key);
+        }
     }
 
     public void waitFor(long seconds){
