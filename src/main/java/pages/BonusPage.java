@@ -59,12 +59,10 @@ public class BonusPage extends BasePage{
     By actionCloseBtn = MobileBy.AccessibilityId("action-close");
 
     public void tapOnRefillBtn(){
-        holdOn(3000);
         tap(refillBtn);
     }
 
     public void tapTopUpMtAccount(){
-        holdOn(1000);
         tap(getElement(topUp_MyAccount));
     }
 
@@ -93,11 +91,11 @@ public class BonusPage extends BasePage{
         holdOn(800);
         type(PAYPAL_EMAIL, paypalEmail);
         tap(paypalNextBtn);
-        holdOn(800);
+        //holdOn(800);
         type(PAYPAL_PASSWORD, paypalPassword);
-        holdOn(800);
+        //holdOn(800);
         tap(paypalLoginBtn);
-        holdOn(500);
+        //holdOn(500);
         scrollDown();
         tap(paypalSubmitBtn);
     }

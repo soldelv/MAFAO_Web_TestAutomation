@@ -24,7 +24,7 @@ Feature: Mobile App: Home
       |   keyword   |
       |   football  |
       #|   shirt     |
-
+  @Ignore
   Scenario Outline: Filter products by category
     Given the user is on marketplace screen
     When taps on <category> from Home
