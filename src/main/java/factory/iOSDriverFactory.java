@@ -20,7 +20,6 @@ public class iOSDriverFactory {
         caps.setCapability("appiumVersion", "1.22.3");
         caps.setCapability("deviceName", "iPhone 14");
         caps.setCapability("bundleId", "com.manaty.mafao");
-        //caps.setCapability("app", IOS_APP_PATH);
         return new IOSDriver(uriServer.toURL(), caps);
     }
 
@@ -34,12 +33,12 @@ public class iOSDriverFactory {
         caps.setCapability("automationName", "XCUITest");
         caps.setCapability("platformVersion", "16.3.1");
         caps.setCapability("deviceName", "iPhone de Sol");
-        caps.setCapability("udid","YOUR UDID");
-        caps.setCapability("xcodeOrgId","YOUR ACCOUNT");
+        caps.setCapability("udid","00008110000E74313E41401E");
+        caps.setCapability("xcodeOrgId","jsoldelvalle@gmail.com");
         caps.setCapability("xcodeSigningId", "iPhone Developer");
         caps.setCapability("useNewWDA",true);
-        caps.setCapability("derivedDataPath","your DerivedDataPath");
-        caps.setCapability("app", System.getProperty("user.dir") + "/apps/UIKitCatalog-ios.zip");
+        caps.setCapability("derivedDataPath","/Users/mac/Library/Developer/Xcode/DerivedData/WebDriverAgent-ciegwgvxzxdrqthilmrmczmqvrgu");
+        //caps.setCapability("app", System.getProperty("user.dir") + "/apps/app.zip");
 
         return new IOSDriver(uriServer.toURL(), caps);
     }

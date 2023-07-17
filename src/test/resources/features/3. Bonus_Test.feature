@@ -31,5 +31,4 @@ Feature: Mobile App: Bonus
   # Send Money by mobile number
   # Pending Transaction History
   # Completed Transaction History
-  # Send Money by QR Code
   # Send Payment Request

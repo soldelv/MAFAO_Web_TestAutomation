@@ -63,7 +63,6 @@ public class HomePage extends BasePage{
     }
 
     public void tapOnBonus(){
-        holdOn(3000);
         tap(bonusIcon);
     }
 
