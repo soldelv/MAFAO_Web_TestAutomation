@@ -19,14 +19,13 @@ public class OrdersSteps {
         Assertions.assertTrue(ordersPage.checkProductIsOnOrders(productName));
     }
 
-    @Then("^(.*) is not longer displayed on the list$")
-    public void product_IsNotLongerDisplayedOnTheList(String productName) {
-        Assertions.assertFalse(ordersPage.checkCartIsEmpty(productName));
+    @Then("^the product was removed successfully$")
+    public void product_IsNotLongerDisplayedOnTheList() {
+        Assertions.assertTrue(ordersPage.checkProductRemovedFromCart());
     }
 
     @And("taps pay your order")
     public void goesToOrdersScreenAndTapsPayYourOrder() {
-        ordersPage.scrollDown();
         ordersPage.scrollDown();
         ordersPage.tapOnPayOrder();
     }
@@ -39,5 +38,16 @@ public class OrdersSteps {
     @And("taps on trash icon to remove product from the list")
     public void tapsOnTrashIconToRemoveProductFromTheList() {
         ordersPage.tapOnTrashIcon();
+    }
+
+    @And("taps on change payment method")
+    public void tapsOnChangePaymentMethod() {
+        ordersPage.tapOnChangePaymentMethod();
+    }
+
+    @And("selects MAFAO wallet as a payment method")
+    public void selectsMAFAOWalletAsAPaymentMethod() {
+        ordersPage.selectMafaoWallet();
+        ordersPage.tapOnContinuePaymentMethod();
     }
 }

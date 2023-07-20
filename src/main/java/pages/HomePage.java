@@ -19,9 +19,11 @@ public class HomePage extends BasePage{
     By favoritesIcon = MobileBy.AccessibilityId("favorites");
 
     By ordersIcon = MobileBy.AccessibilityId("orders");
-    By bonusIcon = MobileBy.AccessibilityId("bonus");
+    By bonusIcon = MobileBy.AccessibilityId("bônus");
 
-    By profileIcon = MobileBy.AccessibilityId("profile");
+    By retiradaIcon = MobileBy.AccessibilityId("retirada");
+
+    By profileIcon = MobileBy.AccessibilityId("perfil");
 
     /* CATEGORIES */
     By superBonusCat = MobileBy.xpath("//android.widget.TextView[contains(@text, 'Super Bonus')]");
@@ -66,6 +68,10 @@ public class HomePage extends BasePage{
         tap(bonusIcon);
     }
 
+    public void tapOnRetirada(){
+        tap(retiradaIcon);
+    }
+
     public void tapOnProfile(){
         tap(profileIcon);
     }
@@ -85,12 +91,11 @@ public class HomePage extends BasePage{
     public void tapOnProduct(String productName){
         By product = MobileBy.AccessibilityId("product-"+productName);
         tap(getElement(product));
-        holdOn(800);
     }
 
     public boolean checkProductsAreListed(String keyword){
         try{
-            By products = MobileBy.xpath("//android.view.ViewGroup[contains(@content-desc,'"+keyword+"')]");
+            By products = MobileBy.xpath("//XCUIElementTypeOther[contains(@name, '"+keyword+"')]");
             List elements = getElements(products);
             return (elements.size()>0);
         }catch(NoSuchElementException e){

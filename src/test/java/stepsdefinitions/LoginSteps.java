@@ -93,4 +93,9 @@ public class LoginSteps {
         loginPage.enterOTPCode(COUNTRY_CODE, MOBILE_NUMBER);
         loginPage.enterSecretCode(SECRET_CODE);
     }
+
+    @When("the user enters just pincode")
+    public void theUserEntersJustPincode() {
+        loginPage.enterSecretCode(SECRET_CODE);
+    }
 }

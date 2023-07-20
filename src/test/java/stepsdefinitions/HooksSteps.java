@@ -1,12 +1,9 @@
 package stepsdefinitions;
 
-import factory.AndroidDriverFactory;
 import factory.iOSDriverFactory;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import org.junit.Test;
 
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;

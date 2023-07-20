@@ -13,23 +13,31 @@ public class OrdersPage extends BasePage{
         super(driver);
     }
 
-    By payOrderBtn = MobileBy.xpath("//android.widget.TextView[contains(@text, 'Pay your order')]");
+    By payOrderBtn = MobileBy.xpath("(//XCUIElementTypeOther[@name='Pay your order'])[2]");
+
+    By changePaymentBtn = MobileBy.xpath("(//XCUIElementTypeOther[@name='Change'])[2]");
+
+    By mafaoWalletOption = MobileBy.xpath("(//XCUIElementTypeOther[@name='type-4'])[2]");
+
+    By continueBtn = MobileBy.AccessibilityId("Continue");
+
+    By orderSuccessMessage = MobileBy.xpath("//XCUIElementTypeStaticText[@name='Thank you for your order']");
     By continueShoppingBtn = MobileBy.xpath("//android.view.ViewGroup[@content-desc='continue_shopping_btn']");
 
-    By trashBtn = MobileBy.xpath("//android.view.ViewGroup[4]//android.widget.ImageView[1]");
+    By trashBtn = MobileBy.xpath("(//XCUIElementTypeOther[@name='minus-button quantity-input plus-button'])[1]/XCUIElementTypeOther[2]");
     By cartEmptyMessage = MobileBy.xpath("//android.widget.TextView[contains(@text, 'Your cart is empty')]");
 
     public boolean checkProductIsOnOrders(String productName){
         holdOn(800);
-        By product = MobileBy.AccessibilityId("product-"+productName);
+        By product = MobileBy.xpath("//XCUIElementTypeOther[contains(@name, 'product-"+productName+"')]");
         return isDisplayed(getElement(product));
     }
 
-    public boolean checkCartIsEmpty(String productName){
+    public boolean checkProductRemovedFromCart(){
         holdOn(800);
         try{
-            By product = MobileBy.AccessibilityId("product-"+productName);
-            return isDisplayed(product);
+            By message = MobileBy.AccessibilityId("Removed product successfully");
+            return isDisplayed(message);
         }
         catch(NoSuchElementException e){
             return false;
@@ -44,7 +52,7 @@ public class OrdersPage extends BasePage{
         holdOn(800);
         boolean displayed = false;
         try {
-            displayed = isDisplayed(getElement(continueShoppingBtn));
+            displayed = isDisplayed(getElement(orderSuccessMessage));
         }catch(NoSuchElementException e){
             print("Message not found");
         }
@@ -53,6 +61,19 @@ public class OrdersPage extends BasePage{
 
     public void tapOnTrashIcon(){
         tap(trashBtn);
+    }
+
+    public void tapOnChangePaymentMethod(){
+        scrollDown();
+        tap(changePaymentBtn);
+    }
+
+    public void selectMafaoWallet(){
+        tap(mafaoWalletOption);
+    }
+
+    public void tapOnContinuePaymentMethod(){
+        tap(continueBtn);
     }
 
 }

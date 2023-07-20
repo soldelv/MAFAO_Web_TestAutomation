@@ -17,6 +17,7 @@ public class FavoritesPage extends BasePage{
     }
 
     By favoriteBtn = MobileBy.AccessibilityId("favorite-button");
+    By backBtn = MobileBy.AccessibilityId("\uF208");
     By listProducts = MobileBy.xpath("//android.view.ViewGroup[contains(@content-desc, 'favorite-button')]");
 
     public void tapFavoriteFromMarketplace1(String productNumber){
@@ -44,6 +45,7 @@ public class FavoritesPage extends BasePage{
 
     public void tapFavoriteFromProduct(){
         tap(getElement(favoriteBtn));
+        tap(backBtn);
     }
 
     public boolean checkProductIsOnFavorites(String productName){

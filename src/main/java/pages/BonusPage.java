@@ -47,12 +47,12 @@ public class BonusPage extends BasePage{
     By actionCancelBtn = MobileBy.AccessibilityId("action-cancel");
 
     /* PAYPAL SCREEN */
-    By paypalEmail = MobileBy.xpath("//android.widget.EditText[contains(@resource-id,'email')]");
+    By paypalEmail = MobileBy.xpath("//XCUIElementTypeOther[@name='main']/XCUIElementTypeOther[4]/XCUIElementTypeTextField");
 
-    By paypalNextBtn = MobileBy.xpath("//android.widget.Button[contains(@resource-id,'btnNext')]");
-    By paypalPassword = MobileBy.xpath("//android.widget.EditText[contains(@resource-id,'password')]");
-    By paypalLoginBtn = MobileBy.xpath("//android.widget.Button[contains(@resource-id,'btnLogin')]");
-    By paypalSubmitBtn = MobileBy.xpath("//android.widget.Button[contains(@resource-id,'payment-submit-btn')]");
+    By paypalNextBtn = MobileBy.AccessibilityId("Seguinte");
+    By paypalPassword = MobileBy.xpath("//XCUIElementTypeOther[@name='main']/XCUIElementTypeSecureTextField");
+    By paypalLoginBtn = MobileBy.AccessibilityId("Iniciar sessão");
+    By paypalSubmitBtn = MobileBy.AccessibilityId("Continue to Review Order");
 
     /* SUCCESSFUL TOP-UP MESSAGE */
     By topUpSuccessful = MobileBy.xpath("//android.widget.TextView[contains(@text, 'Top-up completed')]");
@@ -91,11 +91,9 @@ public class BonusPage extends BasePage{
         holdOn(800);
         type(PAYPAL_EMAIL, paypalEmail);
         tap(paypalNextBtn);
-        //holdOn(800);
-        type(PAYPAL_PASSWORD, paypalPassword);
-        //holdOn(800);
         tap(paypalLoginBtn);
-        //holdOn(500);
+        type(PAYPAL_PASSWORD, paypalPassword);
+        tap(paypalLoginBtn);
         scrollDown();
         tap(paypalSubmitBtn);
     }
