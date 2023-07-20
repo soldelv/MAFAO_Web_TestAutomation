@@ -22,9 +22,9 @@ public class FavoritesSteps {
     }
     @Then("^(.*), (.*), (.*) are displayed on Favorites list")
     public void theProductIsDisplayedOnFavoritesList(String p1, String p2, String p3) {
-        Assertions.assertTrue(favoritesPage.checkProductIsOnFavorites(p1));
-        Assertions.assertTrue(favoritesPage.checkProductIsOnFavorites(p2));
-        Assertions.assertTrue(favoritesPage.checkProductIsOnFavorites(p3));
+        Assertions.assertTrue(favoritesPage.checkProductIsDisplayed(p1));
+        Assertions.assertTrue(favoritesPage.checkProductIsDisplayed(p2));
+        Assertions.assertTrue(favoritesPage.checkProductIsDisplayed(p3));
     }
 
     @When("^scrolls down searching for (.*)$")
@@ -43,7 +43,7 @@ public class FavoritesSteps {
 
     @Then("^(.*) is displayed on Favorites list$")
     public void theProductIsDisplayedOnFavoritesList(String product) {
-        Assertions.assertTrue(favoritesPage.checkProductIsOnFavorites(product));
+        Assertions.assertTrue(favoritesPage.checkProductIsDisplayed(product));
     }
 
     @Given("the user has products on favorites list")
@@ -61,5 +61,36 @@ public class FavoritesSteps {
     public void theProductIsNotLongerDisplayedOnFavoritesList() throws InterruptedException {
         Thread.sleep(1000);
         Assertions.assertFalse(favoritesPage.checkFavoritesIsNotEmpty());
+    }
+
+    @And("^products related to (.*) are displayed$")
+    public void productsRelatedToKeywordAreDisplayed(String keyword) {
+        Assertions.assertTrue(favoritesPage.checkProductIsDisplayed(keyword));
+    }
+
+    @And("taps on create an alert")
+    public void tapsOnCreateAnAlert() {
+        favoritesPage.tapCreateAnAlert();
+    }
+
+    @And("taps on Alerts")
+    public void tapsOnAlerts() {
+        favoritesPage.tapOnAlerts();
+    }
+
+    @Then("^(.*) alert is displayed$")
+    public void keywordAlertIsDisplayed(String keyword) {
+        Assertions.assertTrue(favoritesPage.checkAlertIsDisplayed(keyword));
+    }
+
+    @And("tap on delete alert")
+    public void tapOnDeleteAlert() {
+        favoritesPage.tapOnDeleteAlert();
+        favoritesPage.confirmDeletionAlert();
+    }
+
+    @Then("alert was successfully deleted")
+    public void alertWasSuccessfullyDeleted() {
+        Assertions.assertTrue(favoritesPage.checkAlertIsDeleted());
     }
 }

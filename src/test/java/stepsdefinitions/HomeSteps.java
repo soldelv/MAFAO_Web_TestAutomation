@@ -82,10 +82,4 @@ public class HomeSteps {
     public void tapsOnCategoryFromHome(String categoryName) {
         homePage.tapOnCategory(categoryName);
     }
-
-    @Then("^products related to (.*) are displayed$")
-    public void productsRelatedToCategoryAreDisplayed(String categoryName) {
-        Assertions.assertTrue(homePage.checkProductsAreListed("product-"));
-        print("After filter by "+categoryName+" products are displayed");
-    }
 }

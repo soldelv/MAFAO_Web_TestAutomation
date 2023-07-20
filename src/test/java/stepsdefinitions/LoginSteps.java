@@ -42,20 +42,38 @@ public class LoginSteps {
         print("searched the country");
 
     }
+    @When("^the user taps on flag icon and searches for (.*)$")
+    public void theUserTapsOnFlagIconAndSearchesFor(String country) {
+        loginPage.tapOnFlagIcon();
+        print("Tapped on flag icon");
+        loginPage.searchCountry(country);
+        print("searched the country");
+
+    }
 
     @And("^taps on searched country flag$")
     public void tapsOnCountryFlag() {
         loginPage.tapOnSearchedCountry();
     }
 
+    @And("^enters a registered mobile number and taps on send code$")
+    public void entersARegisteredMobile_numberAndTapsOnSendCode() {
+        loginPage.enterMobileNumber(MOBILE_NUMBER);
+    }
+
     @And("^enters a valid mobile number and taps on send code$")
     public void entersAValidMobile_numberAndTapsOnSendCode() {
-        loginPage.enterMobileNumber(MOBILE_NUMBER);
+        loginPage.enterMobileNumber("756490210");
     }
 
     @And("^enters the verification code and taps on send$")
     public void entersTheVerificationCodeAndTapsOnSend() throws Exception {
         loginPage.enterOTPCode(COUNTRY_CODE, MOBILE_NUMBER);
+    }
+
+    @And("^enters a valid verification code and taps on send$")
+    public void entersAValidVerificationCodeAndTapsOnSend() throws Exception {
+        loginPage.enterOTPCode("+33", "756490210");
     }
 
     @And("^enters a valid secret code and taps on confirm$")
@@ -97,5 +115,17 @@ public class LoginSteps {
     @When("the user enters just pincode")
     public void theUserEntersJustPincode() {
         loginPage.enterSecretCode(SECRET_CODE);
+    }
+
+    @And("taps on forgot pincode")
+    public void tapsOnForgotPincode() {
+        loginPage.tapOnForgotPincode();
+    }
+
+    @And("^enter the (.*) twice$")
+    public void enterTheNew_pincodeTwice(String newPincode) {
+        loginPage.enterNewPincode(newPincode);
+        holdOn(100);
+        loginPage.enterNewPincode(newPincode);
     }
 }

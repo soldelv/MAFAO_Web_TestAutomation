@@ -10,7 +10,7 @@ Feature: Login features in MAFAO APP Mobile for Android
   Scenario: Successful login with valid credentials
     When the user taps on flag icon and searches a country
     And taps on searched country flag
-    And enters a valid mobile number and taps on send code
+    And enters a registered mobile number and taps on send code
     And enters the verification code and taps on send
     And enters a valid secret code and taps on confirm
     Then the user should be logged in successfully
@@ -18,7 +18,7 @@ Feature: Login features in MAFAO APP Mobile for Android
   Scenario Outline: Invalid login with incorrect secret code
     When the user taps on flag icon and searches a country
     And taps on searched country flag
-    And enters a valid mobile number and taps on send code
+    And enters a registered mobile number and taps on send code
     And enters the verification code and taps on send
     And enters incorrect <secret_code> and taps on confirm
     Then the user should see an error message
@@ -26,5 +26,17 @@ Feature: Login features in MAFAO APP Mobile for Android
       | secret_code |
       |    111111   |
 
-  # NEXT IMPLEMENTATIONS
-  # Reset pincode
+  Scenario Outline: Reset pincode after a fail login
+    When the user taps on flag icon and searches for <country>
+    And taps on searched country flag
+    And enters a valid mobile number and taps on send code
+    And enters a valid verification code and taps on send
+    And taps on forgot pincode
+    And the user taps on flag icon and searches for <country>
+    And taps on searched country flag
+    And enters a valid mobile number and taps on send code
+    And enters a valid verification code and taps on send
+    And enter the <new_pincode> twice
+    Examples:
+      |   country | new_pincode |
+      |   france  |   140686    |

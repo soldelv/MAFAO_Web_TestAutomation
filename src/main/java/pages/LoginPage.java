@@ -25,6 +25,8 @@ public class LoginPage extends BasePage {
     By profileIcon = MobileBy.AccessibilityId("profile");
     By errorLogin = MobileBy.xpath("//*[@text='You entered an invalid pincode. Please try again.']");
 
+    By forgotPincodeBtn = MobileBy.AccessibilityId("forgot-pin");
+
     /* KEY PATH LOCATORS */
     By keypathDelete = MobileBy.AccessibilityId("keypad-delete");
     By deleteBtn = MobileBy.AccessibilityId("Delete");
@@ -81,6 +83,13 @@ public class LoginPage extends BasePage {
 
     public boolean getErrorLoginMsg() {
         return isDisplayed(getElement(errorLogin));
+    }
+    public void tapOnForgotPincode() {
+        tap(forgotPincodeBtn);
+    }
+
+    public void enterNewPincode(String newPincode) {
+        typeFromKeyboard("", newPincode);
     }
 
 }

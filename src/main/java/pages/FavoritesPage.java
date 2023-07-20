@@ -9,6 +9,7 @@ import org.openqa.selenium.StaleElementReferenceException;
 
 import java.util.List;
 
+import static apis.MafaoAPIs.getAlertsQuantity;
 import static utils.CommonMethods.print;
 
 public class FavoritesPage extends BasePage{
@@ -18,6 +19,12 @@ public class FavoritesPage extends BasePage{
 
     By favoriteBtn = MobileBy.AccessibilityId("favorite-button");
     By backBtn = MobileBy.AccessibilityId("\uF208");
+    By createAlertBtn = MobileBy.AccessibilityId("Create an alert");
+
+    By deleteAlertBtn = MobileBy.AccessibilityId("Delete");
+    By confirmDeletion = MobileBy.AccessibilityId("Confirm");
+    By deletionConfirmedMessage = MobileBy.AccessibilityId("Alert has been deleted successfully");
+
     By listProducts = MobileBy.xpath("//android.view.ViewGroup[contains(@content-desc, 'favorite-button')]");
 
     public void tapFavoriteFromMarketplace1(String productNumber){
@@ -48,9 +55,37 @@ public class FavoritesPage extends BasePage{
         tap(backBtn);
     }
 
-    public boolean checkProductIsOnFavorites(String productName){
-        By product = MobileBy.AccessibilityId("product-"+productName);
-        return isDisplayed(getElement(product));
+    public void tapCreateAnAlert(){
+        tap(getElement(createAlertBtn));
+        tap(backBtn);
+    }
+
+    public void tapOnAlerts(){
+        By alertBtn = MobileBy.AccessibilityId("Alerts ("+getAlertsQuantity()+")");
+        tap(alertBtn);
+    }
+
+    public boolean checkAlertIsDisplayed(String keyword){
+        By alert = MobileBy.xpath("//XCUIElementTypeOther[contains(@name,'"+keyword+"')]");
+        return isDisplayed(alert);
+    }
+
+    public void tapOnDeleteAlert(){
+        tap(deleteAlertBtn);
+    }
+
+    public void confirmDeletionAlert(){
+        tap(confirmDeletion);
+    }
+
+    public boolean checkAlertIsDeleted(){
+        return isDisplayed(deletionConfirmedMessage);
+    }
+
+
+    public boolean checkProductIsDisplayed(String productName){
+        By product = MobileBy.xpath("//XCUIElementTypeOther[contains(@name,'product-"+productName+"')]");
+        return isDisplayed(product);
     }
 
     public void tapFavoriteFromMarketplace(String productName){
