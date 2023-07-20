@@ -22,8 +22,8 @@ public class LoginPage extends BasePage {
     By phoneOTPInput = MobileBy.AccessibilityId("phone-otp-input");
     By submitBtn = MobileBy.AccessibilityId("btn-submit");
     By confirmLoginBtn = MobileBy.AccessibilityId("confirm-login-button");
-    By profileIcon = MobileBy.AccessibilityId("perfil");
-    By errorLogin = MobileBy.xpath("//*[@text=\"You entered an invalid pincode. Please try again.\"]");
+    By profileIcon = MobileBy.AccessibilityId("profile");
+    By errorLogin = MobileBy.xpath("//*[@text='You entered an invalid pincode. Please try again.']");
 
     /* KEY PATH LOCATORS */
     By keypathDelete = MobileBy.AccessibilityId("keypad-delete");

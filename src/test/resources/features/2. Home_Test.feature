@@ -5,10 +5,18 @@ Feature: Mobile App: Home
   - Search products
   - Filter products by category
 
+  # USER LOGIN
+  #Background:
+  #  Given the user accesses to MAFAO application
+  #  When the user enters valid credentials
+  #  Then the user is logged in on MAFAO mobile application
+
+    # USER ALREADY LOGGED IN
   Background:
     Given the user accesses to MAFAO application
-    When the user enters valid credentials
+    When the user enters just pincode
     Then the user is logged in on MAFAO mobile application
+
 
   Scenario: Display products in Marketplace
     Given the user is on marketplace screen

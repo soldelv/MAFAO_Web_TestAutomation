@@ -8,7 +8,6 @@ import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 import pages.HomePage;
 
-import static utils.CommonMethods.holdOn;
 import static utils.CommonMethods.print;
 
 public class HomeSteps {
@@ -44,12 +43,17 @@ public class HomeSteps {
     public void tapsOnProduct_FromMarketplace(String product1) {
         homePage.tapOnProduct(product1);
     }
+
+    @When("^scrolls down and taps on (.*) from marketplace$")
+    public void scrollAndTapOnProduct_FromMarketplace(String product1) {
+        homePage.scrollDown();
+        homePage.tapOnProduct(product1);
+    }
+
     @Given("the user is on orders screen")
     @And("goes to orders screen")
     public void goesToOrdersScreen() {
-        holdOn(1000);
         homePage.tapOnOrders();
-        holdOn(1000);
     }
 
     @When("scrolls down on the home")

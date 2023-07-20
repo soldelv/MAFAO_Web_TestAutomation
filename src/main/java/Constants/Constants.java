@@ -29,6 +29,7 @@ public class Constants {
     public static final String COUNTRY = PropertiesReader.stgUserCountry();
     public static final String MOBILE_NUMBER = PropertiesReader.stgUserMobile();
     public static final String COUNTRY_CODE = PropertiesReader.stgUserCountryCode();
+    public static final String FULL_MOBILE_NUMBER = COUNTRY_CODE+MOBILE_NUMBER;
     public static final String SECRET_CODE = PropertiesReader.stgUserSecretCode();
 
     /* PAYPAL - CREDENTIALS */

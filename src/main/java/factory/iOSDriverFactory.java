@@ -19,6 +19,8 @@ public class iOSDriverFactory {
         caps.setCapability("maxInstances", "1");
         caps.setCapability("appiumVersion", "1.22.3");
         caps.setCapability("deviceName", "iPhone 14");
+        caps.setCapability("xcodeOrgId","75C9U59DUL");
+        caps.setCapability("xcodeSigningId", "iPhone Developer");
         caps.setCapability("bundleId", "com.manaty.mafao");
         return new IOSDriver(uriServer.toURL(), caps);
     }

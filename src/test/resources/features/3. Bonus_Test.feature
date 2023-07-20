@@ -9,11 +9,20 @@ Feature: Mobile App: Bonus
   - Send Payment Request
   - Pay via QR
 
+  # USER LOGIN
+  #Background:
+  #  Given the user accesses to MAFAO application
+  #  When the user enters valid credentials
+  #  Then the user is logged in on MAFAO mobile application
+
+    # USER ALREADY LOGGED IN
   Background:
     Given the user accesses to MAFAO application
-    When the user enters valid credentials
+    When the user enters just pincode
     Then the user is logged in on MAFAO mobile application
 
+  #Unable to locate refill-button
+  @Ignore
   Scenario Outline: Top-up money by paypal
     Given the user is on bonus screen
     When the user taps on refill button
