@@ -18,6 +18,8 @@ import static utils.CommonMethods.print;
 public class MafaoAPIs {
     private static final String apiOTPCode =URL_STG+"meveo/rest/TestOTP";
     private static final String listProducts = URL_STG+"meveo/rest/odooProductsAPI";
+    private static final String listAlerts = URL_STG+"meveo/rest/listAlerts";
+
 
     public static String login(String userName, String password) {
         CloseableHttpClient httpclient = HttpClients.createDefault();
@@ -102,6 +104,32 @@ public class MafaoAPIs {
         }catch(Exception e){
             print(e.getMessage());
             return productPrice;
+        }
+    }
+
+    public static String getAlertsQuantity() {
+        CloseableHttpClient httpclient = HttpClients.createDefault();
+        String alertsQuantity = "";
+        try{
+            HttpUriRequest httpget = RequestBuilder.get()
+                    .setUri(new URI(listAlerts))
+                    .addHeader("Authorization","Bearer "+login(FULL_MOBILE_NUMBER, SECRET_CODE))
+                    .build();
+
+            CloseableHttpResponse response = httpclient.execute(httpget);
+            String jsonString = EntityUtils.toString(response.getEntity());
+
+            Alert[] alerts = new Gson().fromJson(jsonString, Alert[].class);
+
+            /*for (Alert alert : alerts) {
+                System.out.println("Id: " + alert.getAlertId() + ", name: " + alert.getName());
+            }*/
+            alertsQuantity = String.valueOf(alerts.length);
+
+            return alertsQuantity;
+        }catch(Exception e){
+            print(e.getMessage());
+            return alertsQuantity;
         }
     }
 
