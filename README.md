@@ -1,8 +1,8 @@
 
-# MAFAO_iOS_TestAutomation
+# MAFAO_TestAutomation
 
 ## Project Overview
-Test Automation Framework for MAFAO Mobile APP with Appium, Java, JUnit and Maven, BDD with Cucumber and Page Object Model design pattern
+Test Automation Framework for MAFAO Mobile and WEB Applications with Appium, Java, JUnit and Maven, BDD with Cucumber and Page Object Model design pattern
 Reusable templates and structure
 
 ## Tech Stack
@@ -49,8 +49,6 @@ https://appium.io/docs/en/about-appium/getting-started/?lang=en
 Appium Desktop
 https://github.com/appium/appium-desktop/releases/tag/v1.20.2
 
-##### Created by Joana Sol Del Valle
+###### Created by Joana Sol Del Valle
 
-* GitHub: https://github.com/soldelv
 * LinkedIn: https://www.linkedin.com/in/jsoldelvalle/
-* Portfolio: https://www.gitshowcase.com/soldelv
