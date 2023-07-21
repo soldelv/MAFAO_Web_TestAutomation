@@ -14,7 +14,7 @@ public class Constants {
     public static String URL_STG = PropertiesReader.getUrlStaging();
     public static final int EXPLICIT_WAIT = 10;
 
-    public static final String PROJECT_NAME = "Automation Test Suite Report - MAFAO - Android";
+    public static final String PROJECT_NAME = "Automation Test Suite Report - MAFAO";
 
     /* PLATFORMS */
     public static final String MOBILE_ANDROID = "Android";

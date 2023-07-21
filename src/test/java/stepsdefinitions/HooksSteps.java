@@ -1,21 +1,24 @@
 package stepsdefinitions;
 
+import factory.AndroidDriverFactory;
 import factory.iOSDriverFactory;
 import io.appium.java_client.AppiumDriver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import org.junit.Test;
 
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
-
-import static apis.MafaoAPIs.getAlertsQuantity;
 
 public class HooksSteps {
     private static AppiumDriver driver;
     @Before
     public void driverSetUp() throws MalformedURLException, URISyntaxException {
-        driver = iOSDriverFactory.initializeIOSDriver();
+        /* IOS ENVIRONMENT */
+        //driver = iOSDriverFactory.initializeIOSDriver();
+
+        /* ANDROID ENVIRONMENT */
+        driver = AndroidDriverFactory.initializeAndroidDriver();
+        //driver = AndroidDriverFactory.initializeAndroidRealDevice();
     }
 
     @After
