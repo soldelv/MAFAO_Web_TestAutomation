@@ -3,6 +3,7 @@ package stepsdefinitions.ios;
 import io.appium.java_client.AppiumDriver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 import pages.ios.OrdersPage_iOS;
 import stepsdefinitions.HooksSteps;

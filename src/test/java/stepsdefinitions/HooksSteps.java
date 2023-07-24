@@ -11,17 +11,17 @@ import java.net.URISyntaxException;
 
 public class HooksSteps {
     private static AppiumDriver driver;
-    @Before
+    //@Before
     public void driverSetUp() throws MalformedURLException, URISyntaxException {
         /* IOS ENVIRONMENT */
-        //driver = iOSDriverFactory.initializeIOSDriver();
+        driver = iOSDriverFactory.initializeIOSDriver();
 
         /* ANDROID ENVIRONMENT */
-        driver = AndroidDriverFactory.initializeAndroidDriver();
+        //driver = AndroidDriverFactory.initializeAndroidDriver();
         //driver = AndroidDriverFactory.initializeAndroidRealDevice();
     }
 
-    @After
+    //@After
     public void driverTearDown(){
         if (null != driver) {
             driver.quit();

@@ -67,4 +67,17 @@ public class PropertiesReader {
         return getQAProperties().getProperty("paypal_password");
     }
 
+    /* ODOO */
+    public static String getWebpageUrl() {
+        return getStagingProperties().getProperty("odoo_url");
+    }
+
+    public static String getAdminEmail_Stg() {
+        return getStagingProperties().getProperty("admin_email");
+    }
+
+    public static String getAdminPassword_Stg() {
+        return getStagingProperties().getProperty("admin_password");
+    }
+
 }
