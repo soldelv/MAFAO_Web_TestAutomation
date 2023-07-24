@@ -5,6 +5,7 @@ import utils.PropertiesReader;
 public class Constants {
 
     public static final String DIRECTORY_ENV_APP = "/src/test/resources/apps/";
+    public static final String DIRECTORY_IMAGES = "/Users/mac/IdeaProjects/qa-ios-test/src/test/resources/product_images/";
     public static String ANDROID_APP_VERSION = PropertiesReader.getAndroidApp();
     public static String ANDROID_APP_PATH = System.getProperty("user.dir")+DIRECTORY_ENV_APP+ ANDROID_APP_VERSION;
 
@@ -18,6 +19,7 @@ public class Constants {
 
     /* PLATFORMS */
     public static final String MOBILE_ANDROID = "Android";
+    public static final String ODOO_URL = PropertiesReader.getWebpageUrl();;
 
     /* ENVIRONMENT CONFIGURATION FILES */
     public static final String DIRECTORY_ENV_CONFIG = "src/test/resources/config/";
@@ -35,5 +37,9 @@ public class Constants {
     /* PAYPAL - CREDENTIALS */
     public static final String PAYPAL_EMAIL = PropertiesReader.qaPaypalEmail();
     public static final String PAYPAL_PASSWORD = PropertiesReader.qaPaypalPassword();
+
+    public static final String ADMIN_EMAIL_STG = PropertiesReader.getAdminEmail_Stg();
+
+    public static final String ADMIN_PASSWORD_STG = PropertiesReader.getAdminPassword_Stg();
 
 }
