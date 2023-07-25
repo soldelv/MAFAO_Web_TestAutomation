@@ -15,7 +15,6 @@ Feature: Bonus features on Mobile Application | iOS Environment
     And the user taps on Completed transactions
     Then completed transactions are displayed
 
-  #Unable to locate refill-button
   @Ignore @deprecated-soon
   Scenario Outline: Top-up money by paypal
     Given the user is on bonus screen
