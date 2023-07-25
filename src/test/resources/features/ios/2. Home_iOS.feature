@@ -1,14 +1,14 @@
 @test-set:regression
 Feature: Home features on Mobile Application | iOS Environment
 
-    # USER ALREADY LOGGED IN
   Background:
     Given the user accesses to MAFAO iOS application
-    When the user enters just pincode
+    When checks if user is already logged in
+    And enters a valid secret code and taps on confirm
     Then the user is logged in on MAFAO mobile application
 
 
-  Scenario: Display products in Marketplace
+  Scenario: Display/Scroll products in Marketplace
     Given the user is on marketplace screen
     When scrolls down on the home
     Then the user can see the products listed

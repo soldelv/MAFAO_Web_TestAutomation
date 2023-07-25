@@ -5,6 +5,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import org.openqa.selenium.By;
 
+import static Constants.Constants.*;
 import static utils.CommonMethods.holdOn;
 import static utils.CommonMethods.print;
 
@@ -27,7 +28,7 @@ public class LoginPage_iOS extends BasePage_iOS {
 
     By forgotPincodeBtn = MobileBy.AccessibilityId("forgot-pin");
 
-    /* KEY PATH LOCATORS */
+    /** KEY PATH LOCATORS **/
     By keypathDelete = MobileBy.AccessibilityId("keypad-delete");
     By deleteBtn = MobileBy.AccessibilityId("Delete");
 
@@ -90,6 +91,30 @@ public class LoginPage_iOS extends BasePage_iOS {
 
     public void enterNewPincode(String newPincode) {
         typeFromKeyboard("", newPincode);
+    }
+
+    public boolean checkLoggedOutSuccessfully() {
+        holdOn(1000);
+        return isDisplayed(getElement(loginBtn));
+    }
+
+    public void checkIfIsAlreadyLoggedIn() throws Exception {
+        if(isDisplayed(confirmLoginBtn)){
+            print("User already logged in");
+        }
+        else{
+            print("User not logged in yet");
+            tapOnLoginBtn();
+            if(checkIsOnLoginScreen()){
+                tapOnFlagIcon();
+                print("Tapped on flag icon");
+                searchCountry(COUNTRY);
+                print("searched the country");
+                tapOnSearchedCountry();
+                enterMobileNumber(MOBILE_NUMBER);
+                enterOTPCode(COUNTRY_CODE, MOBILE_NUMBER);
+            }
+        }
     }
 
 }

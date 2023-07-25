@@ -26,6 +26,8 @@ public class BonusPage_iOS extends BasePage_iOS {
     By upcomingTransaction = MobileBy.AccessibilityId("Upcoming");
     By completedTransaction = MobileBy.AccessibilityId("Completed");
 
+    By transactionsList = MobileBy.xpath("//XCUIElementTypeOther[contains(@name,'transaction-item-with-hashundefined')]");
+
     /* TOP-UPS OPTIONS */
     By topUp_MyAccount = MobileBy.AccessibilityId("type-0");
     By topUp_AnotherAccount = MobileBy.AccessibilityId("type-1");
@@ -54,7 +56,7 @@ public class BonusPage_iOS extends BasePage_iOS {
     By paypalLoginBtn = MobileBy.AccessibilityId("Iniciar sessão");
     By paypalSubmitBtn = MobileBy.AccessibilityId("Continue to Review Order");
 
-    /* SUCCESSFUL TOP-UP MESSAGE */
+    /** SUCCESSFUL TOP-UP MESSAGE **/
     By topUpSuccessful = MobileBy.xpath("//android.widget.TextView[contains(@text, 'Top-up completed')]");
     By actionCloseBtn = MobileBy.AccessibilityId("action-close");
 
@@ -112,4 +114,25 @@ public class BonusPage_iOS extends BasePage_iOS {
     public void tapOnClose(){
         tap(getElement(actionCloseBtn));
     }
+
+    public void getUpcomingTransactions(){
+        tap(upcomingTransaction);
+    }
+
+    public void getCompletedTransactions(){
+        tap(completedTransaction);
+    }
+
+    public boolean checkTransactionsDisplayed(){
+        holdOn(500);
+        boolean displayed = false;
+        try {
+            displayed = isDisplayed(getElement(transactionsList));
+        }catch(NoSuchElementException e){
+            print("Transactions not found");
+        }
+        return displayed;
+    }
+
+
 }

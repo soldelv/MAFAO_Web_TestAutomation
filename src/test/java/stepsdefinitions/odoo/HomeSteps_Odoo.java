@@ -6,7 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.odoo.HomePage_Odoo;
 
-import static Constants.Constants.ODOO_URL;
+import static Constants.Constants.ODOO_URL_STG;
 import static org.junit.Assert.assertEquals;
 
 public class HomeSteps_Odoo {
@@ -20,7 +20,7 @@ public class HomeSteps_Odoo {
 
     @Given("The user access to MAFAO homepage")
     public void theUserAccessToMAFAOHomepage() {
-        homePage.visit(ODOO_URL);
+        homePage.visit(ODOO_URL_STG);
     }
 
     @When("The user clicks on User icon")
@@ -30,7 +30,7 @@ public class HomeSteps_Odoo {
 
     @Then("The user is on Login Page")
     public void theUserIsOnLoginPage() {
-        assertEquals(homePage.getCurrentUrl(),ODOO_URL);
+        assertEquals(homePage.getCurrentUrl(), ODOO_URL_STG);
     }
 
 }

@@ -71,7 +71,12 @@ public class BasePage_iOS {
     }
 
     public boolean isDisplayed(By locator){
-        return driver.findElement(locator).isDisplayed();
+        try{
+            return driver.findElement(locator).isDisplayed();
+        }catch (NoSuchElementException e){
+            e.getMessage();
+            return false;
+        }
     }
 
     public void type(String inputText, By locator){

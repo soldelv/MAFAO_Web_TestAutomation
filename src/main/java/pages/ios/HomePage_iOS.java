@@ -19,11 +19,11 @@ public class HomePage_iOS extends BasePage_iOS {
     By favoritesIcon = MobileBy.AccessibilityId("favorites");
 
     By ordersIcon = MobileBy.AccessibilityId("orders");
-    By bonusIcon = MobileBy.AccessibilityId("bônus");
+    By bonusIcon = MobileBy.AccessibilityId("******");
 
     By retiradaIcon = MobileBy.AccessibilityId("retirada");
 
-    By profileIcon = MobileBy.AccessibilityId("perfil");
+    By profileIcon = MobileBy.AccessibilityId("profile");
 
     /* CATEGORIES */
     By superBonusCat = MobileBy.xpath("//android.widget.TextView[contains(@text, 'Super Bonus')]");

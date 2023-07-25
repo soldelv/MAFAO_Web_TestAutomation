@@ -45,4 +45,24 @@ public class BonusSteps_iOS {
         assertTrue(bonusPage.checkTopUpCompleted());
         bonusPage.tapOnClose();
     }
+
+    @When("the user taps on Upcoming transactions")
+    public void theUserTapsOnUpcomingTransactions() {
+        bonusPage.getUpcomingTransactions();
+    }
+
+    @Then("upcoming transactions are displayed")
+    public void upcomingTransactionsAreDisplayed() {
+        assertTrue(bonusPage.checkTransactionsDisplayed());
+    }
+
+    @When("the user taps on Completed transactions")
+    public void theUserTapsOnCompletedTransactions() {
+        bonusPage.getCompletedTransactions();
+    }
+
+    @Then("completed transactions are displayed")
+    public void completedTransactionsAreDisplayed() {
+        assertTrue(bonusPage.checkTransactionsDisplayed());
+    }
 }
