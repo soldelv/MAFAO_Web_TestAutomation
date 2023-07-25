@@ -35,6 +35,7 @@ public class HomeSteps_iOS {
 
     @Given("the user is on bonus screen")
     public void theUserIsOnBonusScreen() {
+        homePage.tapOnProfile();
         homePage.tapOnBonus();
     }
 
@@ -80,5 +81,10 @@ public class HomeSteps_iOS {
     @When("^taps on (.*) from Home$")
     public void tapsOnCategoryFromHome(String categoryName) {
         homePage.tapOnCategory(categoryName);
+    }
+
+    @When("user goes to profile screen")
+    public void userGoesToProfileScreen() {
+        homePage.tapOnProfile();
     }
 }

@@ -52,4 +52,9 @@ public class OrdersSteps_iOS {
         ordersPage.selectMafaoWallet();
         ordersPage.tapOnContinuePaymentMethod();
     }
+
+    @And("taps pay your order to finish the purchase")
+    public void tapsPayYourOrderToFinishThePurchase() {
+        ordersPage.tapOnPayOrder();
+    }
 }

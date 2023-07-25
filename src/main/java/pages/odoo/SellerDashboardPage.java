@@ -150,6 +150,7 @@ public class SellerDashboardPage extends BasePage_Odoo {
     public boolean checkProductIsNotLongerPending(){
         String productName = productTitle.getText();
         print("PRODUCT NAME-   "+productName);
+        waitForElementToBeVisible(dashboardTitle);
         safeClick(dashboardTitle);
         clickOnPendingProducts();
         List<WebElement> listPending = findElements(By.id("product_name"));

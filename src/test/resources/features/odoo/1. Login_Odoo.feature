@@ -3,7 +3,6 @@ Feature: Login features | MAFAO Odoo Environment
 
   Background:
     Given The user access to MAFAO homepage
-    When The user is on Login Page
 
   @user-type:admin
   Scenario: Login as an admin in MAFAO website

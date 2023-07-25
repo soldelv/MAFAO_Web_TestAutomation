@@ -1,14 +1,22 @@
 @test-set:regression
 Feature: Bonus features on Mobile Application | iOS Environment
 
-    # USER ALREADY LOGGED IN
   Background:
     Given the user accesses to MAFAO iOS application
-    When the user enters just pincode
+    When checks if user is already logged in
+    And enters a valid secret code and taps on confirm
     Then the user is logged in on MAFAO mobile application
 
+  @Ignore @deprecated-soon
+  Scenario: Bonus - Pending and Completed Transaction History
+    Given the user is on bonus screen
+    When the user taps on Upcoming transactions
+    Then upcoming transactions are displayed
+    And the user taps on Completed transactions
+    Then completed transactions are displayed
+
   #Unable to locate refill-button
-  @Ignore
+  @Ignore @deprecated-soon
   Scenario Outline: Top-up money by paypal
     Given the user is on bonus screen
     When the user taps on refill button
@@ -20,10 +28,3 @@ Feature: Bonus features on Mobile Application | iOS Environment
     Examples:
       | amount_to_top_up |
       |       150        |
-
-
-  # NEXT IMPLEMENTATIONS
-  # Send Money by mobile number
-  # Pending Transaction History
-  # Completed Transaction History
-  # Send Payment Request

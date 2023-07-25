@@ -185,12 +185,13 @@ public class NewProductPage extends BasePage_Odoo{
         uploadFirstImage(pencilFirstImageBtn, "0_image.jpg");
 
         //Rest of the images
-        uploadAnImage(5);
+        uploadAnImage(4);
     }
     public void uploadAnImage(int limitPictures) throws AWTException {
         click(addPhotoBtn);
         for(int i=1 ; i<=limitPictures; i++){
             String imageName = i+"_image.jpg";
+            waitForElementToBeVisible(pencilRestImageBtn);
             uploadRestImages(pencilRestImageBtn, imageName);
             if(i<limitPictures){
                 click(saveAndNewBtn);
@@ -235,7 +236,8 @@ public class NewProductPage extends BasePage_Odoo{
         clearAllAndType("10",maximumItemsInput);
         clearAllAndType("5", discountPercentageInput);
         enterKeyboard(discountPercentageInput);
-
+        scrollDown();
+        holdOn(800);
         click(addLineBtn);
         holdOn(1000);
         clearAllAndType("11",minimumItemsInput);

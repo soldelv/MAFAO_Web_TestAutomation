@@ -127,4 +127,14 @@ public class LoginSteps_iOS {
         holdOn(100);
         loginPage.enterNewPincode(newPincode);
     }
+
+    @Then("the user is logged out successfully")
+    public void theUserIsLoggedOutSuccessfully() {
+        Assertions.assertTrue(loginPage.checkLoggedOutSuccessfully());
+    }
+
+    @When("checks if user is already logged in")
+    public void checksIfUserIsAlreadyLoggedIn() throws Exception {
+        loginPage.checkIfIsAlreadyLoggedIn();
+    }
 }

@@ -6,6 +6,7 @@ Feature: Bonus features on Mobile Application | Android Environment
     When the user enters valid credentials - Android
     Then the user is logged in on MAFAO mobile application - Android
 
+  @Ignore @deprecated-soon
   Scenario Outline: Top-up money by paypal
     Given the user is on bonus section - Android
     When taps on refill button - Android

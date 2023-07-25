@@ -20,18 +20,19 @@ public class PropertiesReader {
             return properties;
         }
     }
-
     public static Properties getStagingProperties(){
         return loadProperties(ENV_CONFIG_STG);
     }
 
-    public static Properties getQAProperties(){
-        return loadProperties(ENV_CONFIG_QA);
+    public static Properties getDevProperties(){
+        return loadProperties(ENV_CONFIG_DEV);
     }
 
     public static Properties getProdProperties(){
         return loadProperties(ENV_CONFIG_PROD);
     }
+
+    /** STAGING PROPERTIES **/
 
     public static String getAndroidApp(){
         return getStagingProperties().getProperty("android_version");
@@ -60,15 +61,29 @@ public class PropertiesReader {
     }
 
     public static String qaPaypalEmail(){
-        return getQAProperties().getProperty("paypal_email");
+        return getStagingProperties().getProperty("paypal_email");
     }
 
     public static String qaPaypalPassword(){
-        return getQAProperties().getProperty("paypal_password");
+        return getStagingProperties().getProperty("paypal_password");
     }
 
-    /* ODOO */
-    public static String getWebpageUrl() {
+    /** DEV PROPERTIES **/
+
+    public static String getOdooUrl_Dev() {
+        return getDevProperties().getProperty("odoo_url");
+    }
+    public static String getAdminEmail_Dev() {
+        return getDevProperties().getProperty("admin_email");
+    }
+
+    public static String getAdminPassword_Dev() {
+        return getDevProperties().getProperty("admin_password");
+    }
+
+
+    /** ODOO PROPERTIES **/
+    public static String getOdooUrl_Stg() {
         return getStagingProperties().getProperty("odoo_url");
     }
 
