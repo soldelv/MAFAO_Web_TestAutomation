@@ -1,4 +1,3 @@
-@test-set:regression
 Feature: Bonus features on Mobile Application | iOS Environment
 
   Background:

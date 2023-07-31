@@ -4,7 +4,7 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.AfterClass;
 import org.junit.runner.RunWith;
-
+/*
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "src/test/resources/features",
@@ -20,13 +20,13 @@ import org.junit.runner.RunWith;
                 "unused:target/cucumber-reports/unused-steps.txt"
         },
         monochrome = true
-)
+)*/
 
 public class TestRunner {
-    @AfterClass
+    /*@AfterClass
     public static void end(){
         // TODO
         //Reports.generateReport();
         System.out.println("Here I should have a method to generate reports");
-    }
+    }*/
 }

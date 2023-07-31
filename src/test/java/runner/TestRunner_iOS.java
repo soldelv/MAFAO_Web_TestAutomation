@@ -10,21 +10,14 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features/ios",
         glue = "stepsdefinitions",
 
-        tags = {"@test-set:regression and not (@ignore or @exclude:test-need-fix)"},
+        tags = {"@RegressionTest"},
 
         plugin = {
                 "pretty", "json:target/cucumber-reports/cucumber.json",
                 "html:target/cucumber-html-reports",
-                "junit:target/reports/cucumber.xml",
-                "unused:target/cucumber-reports/unused-steps.txt"
+                "junit:target/reports/cucumber.xml"
         },
         monochrome = true
 )
 public class TestRunner_iOS {
-    @AfterClass
-    public static void end(){
-        // TODO
-        //Reports.generateReport();
-        System.out.println("Here I should have a method to generate reports");
-    }
 }

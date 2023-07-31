@@ -1,4 +1,4 @@
-@test-set:regression
+git @test-set:regression
 Feature: Orders features on Mobile Application | Android Environment
 
   Background:

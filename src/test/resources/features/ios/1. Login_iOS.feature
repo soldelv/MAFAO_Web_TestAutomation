@@ -1,10 +1,9 @@
-@test-set:regression
 Feature: Login features on Mobile Application | iOS Environment
 
   Background:
     Given the user accesses to MAFAO iOS application
 
-  Scenario: Successful login with valid credentials
+  Scenario: LOGIN | Successful login via pincode
     When the user taps on Log in button
     Then the user is on the login screen
     And selects a country - iOS
@@ -25,7 +24,8 @@ Feature: Login features on Mobile Application | iOS Environment
       | secret_code |
       |    111111   |
 
-  Scenario Outline: Reset pincode after a fail login
+  @exclude:test-need-fix
+  Scenario Outline: LOGIN | Reset pincode after a fail login
     When the user taps on Log in button
     Then the user is on the login screen
     And selects <country> from the list

@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import static org.testng.AssertJUnit.fail;
 import static utils.CommonMethods.print;
 
 
@@ -79,12 +80,27 @@ public class BasePage_iOS {
         }
     }
 
+    public void waitUntilIsDisplayed(By locator){
+        while(!isDisplayed(locator)){
+            waitFor(2);
+        }
+        print("Element already displayed: "+locator);
+    }
+
     public void type(String inputText, By locator){
         print(" TYPING ------- "+inputText);
         getElement(locator).sendKeys(inputText);
         print("Typed on element "+locator);
     }
 
+    public void clearAndType(String inputText, By locator){
+        getElement(locator).clear();
+        getElement(locator).sendKeys(inputText);
+    }
+
+    public String getElementValue(By locator){
+        return getElement(locator).getAttribute("value");
+    }
     public void clear(MobileElement element) {
         element.clear();
     }
@@ -95,8 +111,12 @@ public class BasePage_iOS {
     }
 
     public void tap(By locator) {
-        getElement(locator).click();
-        print("Tapped on "+locator);
+        if(isDisplayed(locator)){
+            getElement(locator).click();
+            print("Tapped on "+locator);
+        }else{
+            fail("Locator not found, invalid to tap: "+locator);
+        }
     }
 
     public String getAttribute(MobileElement element, String attribute) {
@@ -121,8 +141,8 @@ public class BasePage_iOS {
         print("Split number" + Arrays.toString(splitNumber));
 
         for (char i : splitNumber) {
-            print("TAP NUMBER --- "+String.valueOf(i));
-            By key = MobileBy.AccessibilityId(String.valueOf(locator+i));
+            print("TAP NUMBER --- "+ i);
+            By key = MobileBy.AccessibilityId(locator + i);
             tap(key);
         }
     }

@@ -2,7 +2,9 @@ package utils;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Date;
 import java.util.Random;
 
@@ -21,10 +23,25 @@ public class CommonMethods {
         }
     }
 
-    // Method to generate a string using the current date and time
     public static String generateDateTimeString() {
         Date currentDate = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
+        String formattedDateTime = sdf.format(currentDate);
+
+        return formattedDateTime;
+    }
+
+    public static String todayDayAndMonth() {
+        Date currentDate = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM");
+        String formattedDateTime = sdf.format(currentDate);
+
+        return formattedDateTime;
+    }
+
+    public static String generateNewPincode() {
+        Date currentDate = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("ddMMyy");
         String formattedDateTime = sdf.format(currentDate);
 
         return formattedDateTime;
@@ -43,5 +60,19 @@ public class CommonMethods {
         // Generate a random integer between 100 and 999 (inclusive)
         int randomNumber = random.nextInt(900) + 100;
         return randomNumber;
+    }
+
+    public static String convertDateTime(String input) {
+        try {
+            DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+            LocalDateTime dateTime = LocalDateTime.parse(input, inputFormatter);
+            DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("MMMM d 'at' HH:mm");
+            String formattedDateTime = dateTime.format(outputFormatter);
+
+            return formattedDateTime;
+        } catch (DateTimeParseException e) {
+            print("Error: Invalid date-time format.");
+            return null;
+        }
     }
 }

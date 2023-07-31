@@ -5,8 +5,7 @@ import io.appium.java_client.MobileBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 
-import static utils.CommonMethods.holdOn;
-import static utils.CommonMethods.print;
+import static utils.CommonMethods.*;
 
 public class OrdersPage_iOS extends BasePage_iOS {
     public OrdersPage_iOS(AppiumDriver driver) {
@@ -22,10 +21,11 @@ public class OrdersPage_iOS extends BasePage_iOS {
     By continueBtn = MobileBy.AccessibilityId("Continue");
 
     By orderSuccessMessage = MobileBy.xpath("//XCUIElementTypeStaticText[@name='Thank you for your order']");
-    By continueShoppingBtn = MobileBy.xpath("//android.view.ViewGroup[@content-desc='continue_shopping_btn']");
+    By continueShoppingBtn = MobileBy.xpath("(//XCUIElementTypeOther[@name='continue_shopping_btn'])[2]");
 
     By trashBtn = MobileBy.xpath("(//XCUIElementTypeOther[@name='minus-button quantity-input plus-button'])[1]/XCUIElementTypeOther[2]");
-    By cartEmptyMessage = MobileBy.xpath("//android.widget.TextView[contains(@text, 'Your cart is empty')]");
+    By paidOrderTab = MobileBy.AccessibilityId("Paid orders");
+    By transactionDetailsTitle = MobileBy.xpath("//XCUIElementTypeStaticText[@name='View order details']");
 
     public boolean checkProductIsOnOrders(String productName){
         holdOn(800);
@@ -50,13 +50,7 @@ public class OrdersPage_iOS extends BasePage_iOS {
 
     public boolean checkPurchaseSuccessful(){
         holdOn(800);
-        boolean displayed = false;
-        try {
-            displayed = isDisplayed(getElement(orderSuccessMessage));
-        }catch(NoSuchElementException e){
-            print("Message not found");
-        }
-        return displayed;
+        return isDisplayed(orderSuccessMessage);
     }
 
     public void tapOnTrashIcon(){
@@ -74,6 +68,30 @@ public class OrdersPage_iOS extends BasePage_iOS {
 
     public void tapOnContinuePaymentMethod(){
         tap(continueBtn);
+    }
+
+    public void tapOnContinueShoppingBtn(){
+        tap(continueShoppingBtn);
+    }
+
+    public void tapOnPaidOrderTab(){
+        tap(paidOrderTab);
+    }
+
+    public boolean checkIsInPaidOrders(String productName){
+        String pickUpLocation = "Viyline Cosmetics, 426 Paltok, Manila";
+        By order = MobileBy.xpath("(//XCUIElementTypeOther[@name='"+productName+" Quantity: 1 Paid on "+todayDayAndMonth()+" In preparation "+pickUpLocation+" \uF214\'])[2]");
+        return isDisplayed(order);
+    }
+
+    public void tapOnOrder(String productName){
+        String pickUpLocation = "Viyline Cosmetics, 426 Paltok, Manila";
+        By order = MobileBy.xpath("(//XCUIElementTypeOther[@name=\'"+productName+" Quantity: 1 Paid on "+todayDayAndMonth()+" In preparation "+pickUpLocation+" \uF214\'])[2]");
+        tap(order);
+    }
+
+    public boolean checkTransactionDetailsAreDisplayed(){
+        return isDisplayed(transactionDetailsTitle);
     }
 
 }
