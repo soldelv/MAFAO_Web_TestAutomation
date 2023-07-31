@@ -25,7 +25,7 @@ public class LoginSteps_iOS {
     }
 
 
-    @When("the user taps on Log in button")
+    @When("^the user taps on Log in button$")
     public void theUserTapsOnLogInButton() {
         loginPage.tapOnLoginBtn();
 

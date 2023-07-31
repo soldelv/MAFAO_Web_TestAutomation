@@ -41,6 +41,4 @@ build/
 *.apk
 
 ### PROPERTIES ###
-dev_config.properties
-prod_config.properties
-stg_config.properties
+*_config.properties

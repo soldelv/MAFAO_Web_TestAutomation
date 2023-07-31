@@ -1,4 +1,3 @@
-@test-set:regression
 Feature: Orders features on Mobile Application | iOS Environment
 
   Background:
@@ -7,7 +6,8 @@ Feature: Orders features on Mobile Application | iOS Environment
     And enters a valid secret code and taps on confirm
     Then the user is logged in on MAFAO mobile application
 
-  Scenario Outline: Add and remove a product from cart
+  @SmokeTest @RegressionTest
+  Scenario Outline: ORDERS | Add and remove a product from cart
     Given the user is on marketplace screen
     When taps on <product_1> from marketplace
     And taps on plus icon
@@ -22,7 +22,8 @@ Feature: Orders features on Mobile Application | iOS Environment
       | 3 in 1 Multipod |
 
 
-  Scenario Outline: Purchase successfully by Paypal
+  @SmokeTest @RegressionTest
+    Scenario Outline: ORDERS | Check out successfully by Paypal
     Given the user is on marketplace screen
     When taps on <product_1> from marketplace
     And add <product_1> to cart
@@ -34,7 +35,8 @@ Feature: Orders features on Mobile Application | iOS Environment
       |  product_1     |
       | Football Ball  |
 
-  Scenario Outline: Purchase successfully by MAFAO wallet
+  @test-set:regression
+  Scenario Outline: ORDERS | Check out successfully by MAFAO wallet
     Given the user is on marketplace screen
     When scrolls down and taps on <product_1> from marketplace
     And add <product_1> to cart
@@ -46,3 +48,15 @@ Feature: Orders features on Mobile Application | iOS Environment
     Examples:
       |  product_1 |
       | Postcards  |
+
+  Scenario Outline: ORDERS | Paid Order tab display after checkout & Transaction Details
+    Given the user is on marketplace screen
+    And goes to orders screen
+    And user goes to Pay Order tab
+    Then the order with <product_1> is on the list
+    And taps on the order with <product_1>
+    Then paid order transaction details are displayed
+    Examples:
+      |  product_1 |
+      | Postcards  |
+

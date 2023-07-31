@@ -64,7 +64,7 @@ public class FavoritesSteps_iOS {
         Assertions.assertFalse(favoritesPage.checkFavoritesIsNotEmpty());
     }
 
-    @And("^products related to (.*) are displayed$")
+    @And("^products related to product (.*) are displayed$")
     public void productsRelatedToKeywordAreDisplayed(String keyword) {
         Assertions.assertTrue(favoritesPage.checkProductIsDisplayed(keyword));
     }

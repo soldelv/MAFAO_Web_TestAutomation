@@ -28,9 +28,10 @@ public class PropertiesReader {
         return loadProperties(ENV_CONFIG_DEV);
     }
 
-    public static Properties getProdProperties(){
-        return loadProperties(ENV_CONFIG_PROD);
-    }
+    public static Properties getQAProperties(){return loadProperties(ENV_CONFIG_QA);}
+
+    /** QA PROPERTIES */
+    public static String getEnvironment(){return getQAProperties().getProperty("environment");}
 
     /** STAGING PROPERTIES **/
 

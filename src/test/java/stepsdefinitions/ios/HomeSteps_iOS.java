@@ -87,4 +87,20 @@ public class HomeSteps_iOS {
     public void userGoesToProfileScreen() {
         homePage.tapOnProfile();
     }
+
+    @And("goes to home section")
+    public void goesToHomeSection() {
+        homePage.tapOnHome();
+    }
+
+    @And("taps on notification icon")
+    public void tapsOnNotificationIcon() {
+        homePage.tapOnNotificationsBtn();
+    }
+
+    @Then("products related to the category are displayed")
+    public void productsRelatedToTheCategoryAreDisplayed() {
+        Assertions.assertTrue(homePage.checkCategoryProductsAreDisplayed());
+        homePage.goBackBtn();
+    }
 }

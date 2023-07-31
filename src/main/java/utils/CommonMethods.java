@@ -21,10 +21,25 @@ public class CommonMethods {
         }
     }
 
-    // Method to generate a string using the current date and time
     public static String generateDateTimeString() {
         Date currentDate = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
+        String formattedDateTime = sdf.format(currentDate);
+
+        return formattedDateTime;
+    }
+
+    public static String todayDayAndMonth() {
+        Date currentDate = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM");
+        String formattedDateTime = sdf.format(currentDate);
+
+        return formattedDateTime;
+    }
+
+    public static String generateNewPincode() {
+        Date currentDate = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("ddMMyy");
         String formattedDateTime = sdf.format(currentDate);
 
         return formattedDateTime;

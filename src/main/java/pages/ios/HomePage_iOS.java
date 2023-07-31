@@ -17,31 +17,26 @@ public class HomePage_iOS extends BasePage_iOS {
     }
     By homeIcon = MobileBy.AccessibilityId("home");
     By favoritesIcon = MobileBy.AccessibilityId("favorites");
-
     By ordersIcon = MobileBy.AccessibilityId("orders");
     By bonusIcon = MobileBy.AccessibilityId("******");
-
     By retiradaIcon = MobileBy.AccessibilityId("retirada");
-
     By profileIcon = MobileBy.AccessibilityId("profile");
+    By notifBtn = MobileBy.AccessibilityId("notif-button");
 
-    /* CATEGORIES */
-    By superBonusCat = MobileBy.xpath("//android.widget.TextView[contains(@text, 'Super Bonus')]");
+    /** CATEGORIES **/
+    By informatiqueCat = MobileBy.AccessibilityId("Informatique");
+    By hardwareCat = MobileBy.AccessibilityId("Hardware");
+    By sportCat = MobileBy.AccessibilityId("Sport");
+    By accessoiresCat = MobileBy.AccessibilityId("Jouets et Accessoires");
+    By homeCat = MobileBy.AccessibilityId("Maison, cuisine & bureau");
+    By hypermarcheCat = MobileBy.AccessibilityId("Hypermarché");
+    By equipementCat = MobileBy.AccessibilityId("Équipement");
+    By fetesCat = MobileBy.AccessibilityId("Fêtes");
 
-    By nouveauCat = MobileBy.xpath("//android.widget.TextView[contains(@text, 'Nouveau')]");
-    By sportCat = MobileBy.xpath("//android.widget.TextView[contains(@text, 'Sport')]");
-    By seTermineCat = MobileBy.xpath("//android.widget.TextView[contains(@text, 'Se termine bientot')]");
-    By bonusAtteintCat = MobileBy.xpath("//android.widget.TextView[contains(@text, 'Bonus atteint ou presque')]");
-    By hypermarcheCat = MobileBy.xpath("//android.widget.TextView[contains(@text, 'Hypermarché')]");
-    By equipementCat = MobileBy.xpath("//android.widget.TextView[contains(@text, 'Équipement')]");
-    By fetesCat = MobileBy.xpath("//android.widget.TextView[contains(@text, 'Fêtes')]");
-    By favoritesEmpty = MobileBy.xpath("//android.widget.TextView[contains(@text,'Can not find any favorite products')]");
-
-    /* PRODUCTS */
-    By listProducts = MobileBy.xpath("//android.view.ViewGroup[contains(@content-desc, 'product-')]");
+    /** PRODUCTS */
     By listProductsFav = MobileBy.xpath("//android.view.ViewGroup[contains(@content-desc, 'favorite-button')]");
     //By backIconBtn = MobileBy.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup[1]/android.widget.TextView");
-    By backIconBtn = MobileBy.xpath("//android.widget.TextView[1]");
+    By backIconBtn = MobileBy.AccessibilityId("\uF208");
     public void tapOnBackIcon(){
         print("Before tap back icon");
         tap(backIconBtn);
@@ -66,6 +61,10 @@ public class HomePage_iOS extends BasePage_iOS {
 
     public void tapOnBonus(){
         tap(bonusIcon);
+    }
+
+    public void tapOnNotificationsBtn(){
+        tap(notifBtn);
     }
 
     public void tapOnRetirada(){
@@ -105,17 +104,28 @@ public class HomePage_iOS extends BasePage_iOS {
 
     public void tapOnCategory(String categoryName){
         switch (categoryName) {
-            case "Super Bonus" -> tap(superBonusCat);
-            case "Nouveau" -> tap(nouveauCat);
+            case "Informatique" -> tap(informatiqueCat);
+            case "Hardware" -> tap(hardwareCat);
             case "Sport" -> tap(sportCat);
-            case "Hypermarché"-> tap(hypermarcheCat);
-            case "Équipement"-> tap(equipementCat);
+            case "Toys and Accessories"-> tap(accessoiresCat);
+            case "Home, Kitchen and Office"-> tap(homeCat);
+            case "Hypermarket" -> tap(hypermarcheCat);
+            case "Equipement" -> tap(equipementCat);
             case "Fêtes"-> tap(fetesCat);
             default -> {
                 print("Invalid category name");
             }
         }
         holdOn(5);
+    }
+
+    public boolean checkCategoryProductsAreDisplayed(){
+        By products = MobileBy.xpath("//XCUIElementTypeOther[contains(@name,'product-')]");
+        return isDisplayed(products);
+    }
+
+    public void goBackBtn(){
+        tap(backIconBtn);
     }
 
 }

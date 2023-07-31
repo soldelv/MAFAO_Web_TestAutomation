@@ -2,6 +2,8 @@ package Constants;
 
 import utils.PropertiesReader;
 
+import static utils.PropertiesReader.*;
+
 public class Constants {
 
     public static final String DIRECTORY_ENV_APP = "/src/test/resources/apps/";
@@ -16,14 +18,15 @@ public class Constants {
 
     /** PLATFORMS **/
     public static final String MOBILE_ANDROID = "Android";
-    public static final String ODOO_URL_STG = PropertiesReader.getOdooUrl_Stg();;
-    public static final String ODOO_URL_DEV = PropertiesReader.getOdooUrl_Dev();;
+    public static final String ODOO_URL_STG = getOdooUrl_Stg();;
+    public static final String ODOO_URL_DEV = getOdooUrl_Dev();;
+    public static final String ENVIRONMENT = getEnvironment();
 
     /** ENVIRONMENT CONFIGURATION FILES **/
     public static final String DIRECTORY_ENV_CONFIG = "src/test/resources/config/";
     public static final String ENV_CONFIG_DEV = "dev_config.properties";
     public static final String ENV_CONFIG_STG = "stg_config.properties";
-    public static final String ENV_CONFIG_PROD = "prod_config.properties";
+    public static final String ENV_CONFIG_QA = "qa_config.properties";
 
     /** STAGING - USER CREDENTIALS **/
     public static final String COUNTRY = PropertiesReader.stgUserCountry();

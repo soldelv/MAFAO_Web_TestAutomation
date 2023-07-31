@@ -7,6 +7,8 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import static utils.CommonMethods.print;
+
 public class iOSDriverFactory {
     public static AppiumDriver initializeIOSDriver() throws MalformedURLException, URISyntaxException {
         AppiumDriver driver;
