@@ -6,14 +6,11 @@ Feature: Home features on Mobile Application | iOS Environment
     And enters a valid secret code and taps on confirm
     Then the user is logged in on MAFAO mobile application
 
-
-  @SmokeTest @RegressionTest
   Scenario: HOME | Display/Scroll products in Marketplace
     Given the user is on marketplace screen
     When scrolls down on the home
     Then the user can see the products listed
 
-  @SmokeTest @RegressionTest
   Scenario Outline: HOME | Search Products by keyword
     Given the user is on marketplace screen
     When the user searches for <keyword> on the searchbar

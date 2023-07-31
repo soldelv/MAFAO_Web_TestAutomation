@@ -50,13 +50,7 @@ public class OrdersPage_iOS extends BasePage_iOS {
 
     public boolean checkPurchaseSuccessful(){
         holdOn(800);
-        boolean displayed = false;
-        try {
-            displayed = isDisplayed(getElement(orderSuccessMessage));
-        }catch(NoSuchElementException e){
-            print("Message not found");
-        }
-        return displayed;
+        return isDisplayed(orderSuccessMessage);
     }
 
     public void tapOnTrashIcon(){

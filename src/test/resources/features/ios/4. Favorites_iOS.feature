@@ -6,18 +6,16 @@ Feature: Favorites features on Mobile Application | iOS Environment
     And enters a valid secret code and taps on confirm
     Then the user is logged in on MAFAO mobile application
 
-  @SmokeTest @RegressionTest
   Scenario Outline: FAVORITES | Add product to Favorites
     Given the user is on marketplace screen
-    When taps on <product_1> from marketplace
+    When taps on <product_name> from marketplace
     And taps on the heart icon to add the product as a favorite
     And goes to favorite section
-    Then <product_1> is displayed on Favorites list
+    Then <product_name> is displayed on Favorites list
     Examples:
-      |  product_1    |
-      |  Baby clothes |
+      |  product_name  |
+      |  Baby clothes  |
 
-  @SmokeTest @RegressionTest
     Scenario Outline: FAVORITES | Create and remove an Alert
     Given the user is on marketplace screen
     When the user searches for <keyword> on the searchbar

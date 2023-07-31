@@ -86,4 +86,31 @@ public class ProfileSteps_iOS {
     public void allTheNotificationsReceivedAreDisplayed() {
         profilePage.goBackBtn();
     }
+
+    @And("clicks on My Shop option")
+    public void clicksOnMyShopOption() {
+        profilePage.tapOnMyShopOption();
+    }
+
+    @Then("seller dashboard from Odoo view is displayed successfully")
+    public void sellerDashboardFromOdooViewIsDisplayedSuccessfully() {
+        assertTrue(profilePage.checkSellerDashboardIsDisplayed());
+    }
+
+    @And("taps on backup account option")
+    public void tapsOnBackupAccountOption() {
+        profilePage.scrollDown();
+        profilePage.tapOnBackupAccount();
+    }
+
+    @And("taps backup button to confirm the backup")
+    public void tapsBackupButtonToConfirmTheBackup() {
+        profilePage.tapOnConfirmBackup();
+    }
+
+    @Then("backup success message is displayed")
+    public void backupSuccessMessageIsDisplayed() {
+        assertTrue(profilePage.checkBackupSuccessMessage());
+        profilePage.tapOnReturnFromBackUp();
+    }
 }

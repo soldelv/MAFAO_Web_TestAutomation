@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import static org.testng.AssertJUnit.fail;
 import static utils.CommonMethods.print;
 
 
@@ -79,6 +80,13 @@ public class BasePage_iOS {
         }
     }
 
+    public void waitUntilIsDisplayed(By locator){
+        while(!isDisplayed(locator)){
+            waitFor(2);
+        }
+        print("Element already displayed: "+locator);
+    }
+
     public void type(String inputText, By locator){
         print(" TYPING ------- "+inputText);
         getElement(locator).sendKeys(inputText);
@@ -103,8 +111,12 @@ public class BasePage_iOS {
     }
 
     public void tap(By locator) {
-        getElement(locator).click();
-        print("Tapped on "+locator);
+        if(isDisplayed(locator)){
+            getElement(locator).click();
+            print("Tapped on "+locator);
+        }else{
+            fail("Locator not found, invalid to tap: "+locator);
+        }
     }
 
     public String getAttribute(MobileElement element, String attribute) {

@@ -18,6 +18,7 @@ import static utils.CommonMethods.print;
 public class MafaoAPIs {
     private static final String apiOTPCode =URL_STG+"meveo/rest/TestOTP";
     private static final String listProducts = URL_STG+"meveo/rest/odooProductsAPI";
+    private static final String listSimilarProducts = URL_STG+"meveo/rest/listSimilarProducts/";
     private static final String listAlerts = URL_STG+"meveo/rest/listAlerts";
 
 
@@ -71,39 +72,62 @@ public class MafaoAPIs {
         }
     }
 
-    public static String getProductPrice(String productName) {
+    public static Product getProductInfoByName(String productName) {
         CloseableHttpClient httpclient = HttpClients.createDefault();
-        String productPrice = "";
+        Product productFound = null;
         try{
-        HttpUriRequest httpget = RequestBuilder.get()
-                .setUri(new URI(listProducts))
-                .addHeader("Authorization","Bearer "+login(FULL_MOBILE_NUMBER, SECRET_CODE))
-                .addParameter("currentPage", "1")
-                .build();
-
+            HttpUriRequest httpget = RequestBuilder.get()
+                    .setUri(new URI(listProducts))
+                    .addHeader("Authorization","Bearer "+login(FULL_MOBILE_NUMBER, SECRET_CODE))
+                    .addParameter("currentPage", "1")
+                    .build();
 
             CloseableHttpResponse response = httpclient.execute(httpget);
             String jsonString = EntityUtils.toString(response.getEntity());
             Gson gson = new Gson();
 
-            // Parse the JSON string into a Java object.
             JsonObject jsonObject = gson.fromJson(jsonString, JsonObject.class);
 
-            // Get the list of products from the JSON object.
             JsonArray productsArray = jsonObject.getAsJsonArray("rows");
             Product[]  products = gson.fromJson(productsArray, Product[] .class);
 
-            // Print the list of products.
             for (Product product : products) {
                 if(Objects.equals(product.getDisplay_name(), productName)){
-                    productPrice = String.valueOf(product.getList_price());
-                    productPrice = productPrice.substring(0, productPrice.length() - 2);
+                    productFound = product;
                 }
             }
-            return productPrice;
+            return productFound;
         }catch(Exception e){
             print(e.getMessage());
-            return productPrice;
+            return productFound;
+        }
+    }
+    public static Product[] getSimilarProductsById(String productId) {
+        CloseableHttpClient httpclient = HttpClients.createDefault();
+        try{
+            HttpUriRequest httpget = RequestBuilder.get()
+                    .setUri(new URI(listSimilarProducts+productId))
+                    .addHeader("Authorization","Bearer "+login(FULL_MOBILE_NUMBER, SECRET_CODE))
+                    .build();
+
+            CloseableHttpResponse response = httpclient.execute(httpget);
+            String jsonString = EntityUtils.toString(response.getEntity());
+            Gson gson = new Gson();
+
+            JsonObject jsonObject = gson.fromJson(jsonString, JsonObject.class);
+
+            JsonArray productsArray = jsonObject.getAsJsonArray("rows");
+            Product[]  products = gson.fromJson(productsArray, Product[] .class);
+
+            if(products.length>0){
+                return products;
+            }else{
+                return null;
+            }
+
+        }catch(Exception e){
+            print(e.getMessage());
+            return null;
         }
     }
 

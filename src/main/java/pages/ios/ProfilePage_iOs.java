@@ -27,6 +27,8 @@ public class ProfilePage_iOs extends BasePage_iOS{
 
     By notificationsBtn = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"Notifications\"])[1]");
 
+    By myShopOptionBtn = MobileBy.xpath("(//XCUIElementTypeOther[@name='My shop'])[1]");
+
     /** PROFILE */
     By displayNameField = MobileBy.xpath("//XCUIElementTypeTextField[@name='edit-profile-display-name']");
 
@@ -44,6 +46,17 @@ public class ProfilePage_iOs extends BasePage_iOS{
     By loginNow = MobileBy.xpath("(//XCUIElementTypeOther[@name='back-to-profile-button'])[2]");
 
     By confirmBtn = MobileBy.xpath("(//XCUIElementTypeOther[@name='confirm-login-button'])[2]");
+    By backupAccountOption = MobileBy.xpath("(//XCUIElementTypeOther[@name='Backup Account \uE61F\'])[2]");
+    By backupBtn = MobileBy.xpath("(//XCUIElementTypeOther[@name='backup-button'])[2]");
+    By successBackupMgs = MobileBy.xpath("//XCUIElementTypeStaticText[@name='Backup successfully']");
+    By returnBtn = MobileBy.xpath("(//XCUIElementTypeOther[@name='return-button'])[2]");
+
+    /** SELLER DASHBOARD */
+    By sellerDashboardTitle = MobileBy.xpath("//XCUIElementTypeStaticText[@name='Seller Dashboard']");
+    By marketplaceProducts = MobileBy.AccessibilityId("Marketplace Products");
+    By marketplaceOrders = MobileBy.AccessibilityId("Marketplace Orders");
+    By sellerPayments = MobileBy.AccessibilityId("Seller Payments");
+    By overviewReports = MobileBy.AccessibilityId("Overview Reports");
 
     public void tapOnLogOutBtn(){
         tap(logOutBtn);
@@ -65,7 +78,9 @@ public class ProfilePage_iOs extends BasePage_iOS{
     public void tapOnNotifications(){
         tap(notificationsBtn);
     }
-
+     public void tapOnMyShopOption(){
+         tap(myShopOptionBtn);
+     }
     public void goBackBtn(){
         tap(backBtn);
     }
@@ -73,6 +88,14 @@ public class ProfilePage_iOs extends BasePage_iOS{
     public void tapOnChangeSecretCode(){
         tap(secretCodeBtn);
     }
+    public void tapOnBackupAccount(){
+        tap(backupAccountOption);
+    }
+
+    public void tapOnConfirmBackup(){
+        tap(backupBtn);
+    }
+
 
     public void changeDisplayName(){
         tap(displayNameField);
@@ -84,6 +107,15 @@ public class ProfilePage_iOs extends BasePage_iOS{
     public boolean checkDisplayNameHasChanged(){
         holdOn(800);
         return (Objects.equals(getElementValue(displayNameField), newDisplayName));
+    }
+
+    public boolean checkBackupSuccessMessage(){
+        waitUntilIsDisplayed(returnBtn);
+        return isDisplayed(successBackupMgs);
+    }
+
+    public void tapOnReturnFromBackUp(){
+        tap(returnBtn);
     }
 
     public void tapOnChangeMySecretCode(){
@@ -134,5 +166,11 @@ public class ProfilePage_iOs extends BasePage_iOS{
             tapOnLoginNow();
         }
         loginWithNewSecretCode("reset");
+    }
+
+    public boolean checkSellerDashboardIsDisplayed(){
+        waitUntilIsDisplayed(sellerDashboardTitle);
+        return isDisplayed(marketplaceProducts) && isDisplayed(marketplaceOrders)
+                && isDisplayed(sellerPayments) && isDisplayed(overviewReports);
     }
 }

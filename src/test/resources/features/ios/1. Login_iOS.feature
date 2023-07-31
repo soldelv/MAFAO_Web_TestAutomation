@@ -3,7 +3,6 @@ Feature: Login features on Mobile Application | iOS Environment
   Background:
     Given the user accesses to MAFAO iOS application
 
-  @SmokeTest @RegressionTest
   Scenario: LOGIN | Successful login via pincode
     When the user taps on Log in button
     Then the user is on the login screen
