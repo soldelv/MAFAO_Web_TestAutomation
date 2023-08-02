@@ -34,6 +34,8 @@ public class Constants {
     public static final String COUNTRY_CODE = PropertiesReader.stgUserCountryCode();
     public static final String FULL_MOBILE_NUMBER = COUNTRY_CODE+MOBILE_NUMBER;
     public static final String SECRET_CODE = PropertiesReader.stgUserSecretCode();
+    public static final String USER_ID = stgUserID();
+    public static final String WALLET_UUID = getWalletUuid();
 
     /** PAYPAL - CREDENTIALS **/
     public static final String PAYPAL_EMAIL = PropertiesReader.qaPaypalEmail();

@@ -65,15 +65,11 @@ public class BonusPage_iOS extends BasePage_iOS {
     }
 
     public void tapTopUpMtAccount(){
-        tap(getElement(topUp_MyAccount));
-    }
-
-    public void tapTopUpAntoherAccount(){
-        tap(getElement(topUp_AnotherAccount));
+        tap(topUp_MyAccount);
     }
 
     public void selectPaypal(){
-        tap(getElement(paypal));
+        tap(paypal);
     }
 
     public void enterTopUpAmount(String amount){
@@ -81,12 +77,12 @@ public class BonusPage_iOS extends BasePage_iOS {
     }
 
     public void tapOnConfirmAmount(){
-        tap(getElement(confirmBtn));
+        tap(confirmBtn);
     }
 
     public void tapOnActionConfirm(){
         print("This is the second confirmation asked before top up money");
-        tap(getElement(actionConfirmBtn));
+        tap(actionConfirmBtn);
     }
 
     public void loginPaypal(){
@@ -104,7 +100,7 @@ public class BonusPage_iOS extends BasePage_iOS {
         holdOn(800);
         boolean displayed = false;
         try {
-            displayed = isDisplayed(getElement(topUpSuccessful));
+            displayed = isDisplayed(topUpSuccessful);
         }catch(NoSuchElementException e){
             print("Message not found");
         }
@@ -112,7 +108,7 @@ public class BonusPage_iOS extends BasePage_iOS {
     }
 
     public void tapOnClose(){
-        tap(getElement(actionCloseBtn));
+        tap(actionCloseBtn);
     }
 
     public void getUpcomingTransactions(){
@@ -127,7 +123,7 @@ public class BonusPage_iOS extends BasePage_iOS {
         holdOn(500);
         boolean displayed = false;
         try {
-            displayed = isDisplayed(getElement(transactionsList));
+            displayed = isDisplayed(transactionsList);
         }catch(NoSuchElementException e){
             print("Transactions not found");
         }

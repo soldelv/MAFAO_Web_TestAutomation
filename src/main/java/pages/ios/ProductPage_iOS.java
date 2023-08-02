@@ -41,7 +41,7 @@ public class ProductPage_iOS extends BasePage_iOS {
 
 
     public void tapOnFavoriteBtn()  {
-        tap(getElement(favoriteBtn));
+        tap(favoriteBtn);
     }
     public void tapOnPlusBtn(){
         tap(plusBtn);

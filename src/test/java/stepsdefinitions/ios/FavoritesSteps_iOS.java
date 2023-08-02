@@ -40,6 +40,7 @@ public class FavoritesSteps_iOS {
     @And("taps on the heart icon to add the product as a favorite")
     public void tapsOnTheHeartIconToAddTheProductAsAFavorite() {
         favoritesPage.tapFavoriteFromProduct();
+        favoritesPage.tapOnBackBtn();
     }
 
     @Then("^(.*) is displayed on Favorites list$")
@@ -93,5 +94,11 @@ public class FavoritesSteps_iOS {
     @Then("alert was successfully deleted")
     public void alertWasSuccessfullyDeleted() {
         Assertions.assertTrue(favoritesPage.checkAlertIsDeleted());
+    }
+
+    @And("alert created button is displayed")
+    public void alertCreatedButtonIsDisplayed() {
+        Assertions.assertTrue(favoritesPage.checkAlertCreatedBtnIsDisplayed());
+        favoritesPage.tapOnBackBtn();
     }
 }

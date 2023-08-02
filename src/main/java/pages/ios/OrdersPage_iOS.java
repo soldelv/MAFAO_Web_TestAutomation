@@ -5,6 +5,7 @@ import io.appium.java_client.MobileBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 
+import static org.testng.AssertJUnit.fail;
 import static utils.CommonMethods.*;
 
 public class OrdersPage_iOS extends BasePage_iOS {
@@ -21,6 +22,9 @@ public class OrdersPage_iOS extends BasePage_iOS {
     By continueBtn = MobileBy.AccessibilityId("Continue");
 
     By orderSuccessMessage = MobileBy.xpath("//XCUIElementTypeStaticText[@name='Thank you for your order']");
+
+    By insufficientFunds = MobileBy.AccessibilityId("Insufficient funds");
+    By okInsufficientFunds = MobileBy.AccessibilityId("OK");
     By continueShoppingBtn = MobileBy.xpath("(//XCUIElementTypeOther[@name='continue_shopping_btn'])[2]");
 
     By trashBtn = MobileBy.xpath("(//XCUIElementTypeOther[@name='minus-button quantity-input plus-button'])[1]/XCUIElementTypeOther[2]");
@@ -30,27 +34,29 @@ public class OrdersPage_iOS extends BasePage_iOS {
     public boolean checkProductIsOnOrders(String productName){
         holdOn(800);
         By product = MobileBy.xpath("//XCUIElementTypeOther[contains(@name, 'product-"+productName+"')]");
-        return isDisplayed(getElement(product));
+        return isDisplayed(product);
     }
 
     public boolean checkProductRemovedFromCart(){
         holdOn(800);
-        try{
-            By message = MobileBy.AccessibilityId("Removed product successfully");
-            return isDisplayed(message);
-        }
-        catch(NoSuchElementException e){
-            return false;
-        }
+        By message = MobileBy.AccessibilityId("Removed product successfully");
+        return isDisplayed(message);
     }
 
     public void tapOnPayOrder(){
         tap(payOrderBtn);
     }
 
-    public boolean checkPurchaseSuccessful(){
+    public void checkPurchaseSuccessful(){
         holdOn(800);
-        return isDisplayed(orderSuccessMessage);
+        if(isDisplayed(orderSuccessMessage)){
+            tapOnContinueShoppingBtn();
+        }else if(isDisplayed(insufficientFunds)){
+            tap(okInsufficientFunds);
+            print("User with Insufficient Funds is not able to purchase");
+        }else{
+            fail("Order can not proceed");
+        }
     }
 
     public void tapOnTrashIcon(){
@@ -58,6 +64,7 @@ public class OrdersPage_iOS extends BasePage_iOS {
     }
 
     public void tapOnChangePaymentMethod(){
+        scrollDown();
         scrollDown();
         tap(changePaymentBtn);
     }

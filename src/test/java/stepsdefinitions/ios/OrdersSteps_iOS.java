@@ -34,8 +34,7 @@ public class OrdersSteps_iOS {
 
     @Then("your order has been registered screen should be displayed")
     public void yourOrderHasBeenRegisteredScreenShouldBeDisplayed() {
-        Assertions.assertTrue(ordersPage.checkPurchaseSuccessful());
-        ordersPage.tapOnContinueShoppingBtn();
+        ordersPage.checkPurchaseSuccessful();
     }
 
     @And("taps on trash icon to remove product from the list")
@@ -45,6 +44,7 @@ public class OrdersSteps_iOS {
 
     @And("taps on change payment method")
     public void tapsOnChangePaymentMethod() {
+        ordersPage.scrollDown();
         ordersPage.tapOnChangePaymentMethod();
     }
 
@@ -66,7 +66,7 @@ public class OrdersSteps_iOS {
 
     @Then("^the order with (.*) is on the list$")
     public void theOrderWithProduct_IsOnTheList(String productName) {
-        Assertions.assertTrue(ordersPage.checkIsInPaidOrders(productName));
+        Assertions.assertTrue(ordersPage.checkIsInPaidOrders(productName), "Order is not listed");
     }
 
     @And("^taps on the order with (.*)$")

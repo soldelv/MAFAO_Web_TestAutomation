@@ -10,7 +10,6 @@ public class Product {
     private double list_price;
     private double oldPrice;
 
-
     public Product() {
     }
 

@@ -101,6 +101,6 @@ public class HomeSteps_iOS {
     @Then("products related to the category are displayed")
     public void productsRelatedToTheCategoryAreDisplayed() {
         Assertions.assertTrue(homePage.checkCategoryProductsAreDisplayed());
-        homePage.goBackBtn();
+        homePage.tapOnBackBtn();
     }
 }

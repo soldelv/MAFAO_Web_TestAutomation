@@ -18,9 +18,8 @@ public class FavoritesPage_iOS extends BasePage_iOS {
     }
 
     By favoriteBtn = MobileBy.AccessibilityId("favorite-button");
-    By backBtn = MobileBy.AccessibilityId("\uF208");
     By createAlertBtn = MobileBy.AccessibilityId("Create an alert");
-
+    By alertCreated = MobileBy.AccessibilityId("Alert created");
     By deleteAlertBtn = MobileBy.AccessibilityId("Delete");
     By confirmDeletion = MobileBy.AccessibilityId("Confirm");
     By deletionConfirmedMessage = MobileBy.AccessibilityId("Alert has been deleted successfully");
@@ -35,34 +34,30 @@ public class FavoritesPage_iOS extends BasePage_iOS {
     }
 
     public boolean checkFavoritesIsNotEmpty(){
-        boolean displayed = false;
-        try {
-            By product = MobileBy.xpath("//android.view.ViewGroup[contains(@content-desc,'product-')]");
-            displayed = isDisplayed(getElement(product));
-        }catch(NoSuchElementException e){
-            print("Favorite list is empty");
-        }
-        return displayed;
+        By product = MobileBy.xpath("//android.view.ViewGroup[contains(@content-desc,'product-')]");
+        return isDisplayed(product);
     }
 
     public void tapOnProduct(String productName){
         By product = MobileBy.AccessibilityId("product-"+productName);
-        tap(getElement(product));
+        tap(product);
     }
 
     public void tapFavoriteFromProduct(){
         tap(getElement(favoriteBtn));
-        tap(backBtn);
     }
 
     public void tapCreateAnAlert(){
-        tap(getElement(createAlertBtn));
-        tap(backBtn);
+        tap(createAlertBtn);
     }
 
     public void tapOnAlerts(){
         By alertBtn = MobileBy.AccessibilityId("Alerts ("+getAlertsQuantity()+")");
         tap(alertBtn);
+    }
+
+    public boolean checkAlertCreatedBtnIsDisplayed(){
+        return isDisplayed(alertCreated);
     }
 
     public boolean checkAlertIsDisplayed(String keyword){
@@ -96,7 +91,7 @@ public class FavoritesPage_iOS extends BasePage_iOS {
 
     public void tapToRemove(){
         By listFavorites = MobileBy.xpath("//android.view.ViewGroup[contains(@content-desc,'favorite-button')]");
-        tap(getElement(listFavorites));
+        tap(listFavorites);
         print("Removed first element of favorites list");
     }
 

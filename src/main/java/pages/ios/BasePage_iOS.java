@@ -25,19 +25,21 @@ import static utils.CommonMethods.print;
 
 
 public class BasePage_iOS {
-    //protected AppiumDriver driver;
+
     protected IOSDriver driver;
     public AndroidTouchAction actions;
-
-    /*public BasePage(AppiumDriver driver) {
-        this.driver = driver;
-    }*/
     public BasePage_iOS(AppiumDriver driver) {
         this.driver = (IOSDriver) driver;
     }
 
-    /* common elements */
+    /** common elements */
     By searchBar = MobileBy.AccessibilityId("search-bar");
+    By backIconBtn = MobileBy.AccessibilityId("\uF208");
+    public void tapOnBackBtn()  {
+        waitUntilIsDisplayed(backIconBtn);
+        tap(backIconBtn);
+    }
+
     public void tapOnSearchbar()  {
         tap(searchBar);
     }
@@ -81,8 +83,12 @@ public class BasePage_iOS {
     }
 
     public void waitUntilIsDisplayed(By locator){
-        while(!isDisplayed(locator)){
-            waitFor(2);
+        for(int i=0; i<10;i++){
+            if(!isDisplayed(locator)){
+                waitFor(2);
+            }else{
+                break;
+            }
         }
         print("Element already displayed: "+locator);
     }
@@ -143,6 +149,7 @@ public class BasePage_iOS {
         for (char i : splitNumber) {
             print("TAP NUMBER --- "+ i);
             By key = MobileBy.AccessibilityId(locator + i);
+            waitUntilIsDisplayed(key);
             tap(key);
         }
     }
@@ -150,56 +157,5 @@ public class BasePage_iOS {
     public void waitFor(long seconds){
         driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
     }
-
-    /* ALERTS */
-    public void testSimpleAlert() {
-        driver.findElementByAccessibilityId("Alert Views").click();
-        driver.findElementByAccessibilityId("Simple").click();
-        driver.switchTo().alert().accept();
-    }
-
-    public void testOkayCancelAlert() {
-        driver.findElementByAccessibilityId("Alert Views").click();
-        driver.findElementByAccessibilityId("Okay / Cancel").click();
-        driver.switchTo().alert().dismiss();
-    }
-
-    public void testSendTextAlert() {
-        driver.findElementByAccessibilityId("Alert Views").click();
-        driver.findElementByAccessibilityId("Text Entry").click();
-        driver.switchTo().alert().sendKeys("Hello TAU");
-        driver.switchTo().alert().accept();
-    }
-
-    /* scroll in ios */
-    public void testScroll() {
-        HashMap<String, Object> scrollObject = new HashMap<>();
-        scrollObject.put("direction","down");
-        scrollObject.put("value","Web View");
-        driver.executeScript("mobile:scroll",scrollObject);
-        driver.findElementByAccessibilityId("Web View").click();
-    }
-
-    /* send photos */
-    public void testSendPhotos() throws IOException {
-        File classPath, imageDir, img;
-        String imgName = "TAU-logo.png";
-
-        classPath = new File(System.getProperty("user.dir"));
-        imageDir = new File(classPath, "/resources/images");
-        img = new File(imageDir.getCanonicalFile(), imgName);
-        driver.pushFile(imgName,img);
-    }
-
-    /* sliders */
-    public void testSlider() {
-        driver.findElementByAccessibilityId("Sliders").click();
-        IOSElement slider = (IOSElement) driver.findElement(By.xpath("//XCUIElementTypeSlider"));
-        slider.setValue("0%");
-        slider.setValue("1%"); // 100%
-        slider.setValue("0.5%"); // 48%
-        //Assert.assertEquals(slider.getAttribute("value"),"48%");
-    }
-
 
 }
