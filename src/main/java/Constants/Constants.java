@@ -7,7 +7,7 @@ import static utils.PropertiesReader.*;
 public class Constants {
 
     public static final String DIRECTORY_ENV_APP = "/src/test/resources/apps/";
-    public static final String DIRECTORY_IMAGES = "/Users/mac/IdeaProjects/qa-ios-test/src/test/resources/product_images/";
+    public static final String DIRECTORY_IMAGES = "/Users/mac/Desktop/Projects/mafao-qa-test-automation/src/test/resources/product_images/";
     public static String ANDROID_APP_VERSION = PropertiesReader.getAndroidApp();
     public static String ANDROID_APP_PATH = System.getProperty("user.dir")+DIRECTORY_ENV_APP+ ANDROID_APP_VERSION;
     public static String IOS_APP_VERSION = PropertiesReader.getIOSApp();
