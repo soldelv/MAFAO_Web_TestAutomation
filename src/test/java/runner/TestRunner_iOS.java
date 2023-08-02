@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features/ios",
         glue = "stepsdefinitions",
 
-        tags = {"@RegressionTest"},
+        tags = "@test-set-regression",
 
         plugin = {
                 "pretty", "json:target/cucumber-reports/cucumber.json",

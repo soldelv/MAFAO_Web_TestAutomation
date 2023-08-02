@@ -17,12 +17,15 @@ public class ProfileSteps_iOS {
 
     @And("clicks on log out")
     public void clicksOnLogOut() {
+        profilePage.scrollDown();
+        profilePage.scrollDown();
         profilePage.tapOnLogOutBtn();
         profilePage.confirmLogOutBtn();
     }
 
     @When("taps on settings")
     public void tapsOnSettings() {
+        profilePage.scrollDown();
         profilePage.tapOnSettingsBtn();
     }
 
@@ -112,5 +115,15 @@ public class ProfileSteps_iOS {
     public void backupSuccessMessageIsDisplayed() {
         assertTrue(profilePage.checkBackupSuccessMessage());
         profilePage.tapOnReturnFromBackUp();
+    }
+
+    @When("display name shows correctly")
+    public void displayNameShowsCorrectly() {
+        assertTrue(profilePage.checkDisplayedName(), "Display name is not displayed correctly");
+    }
+
+    @Then("profile picture is displayed correctly")
+    public void profilePictureIsDisplayedCorrectly() {
+        assertTrue(profilePage.checkProfilePicture(), "Profile picture is not displayed correctly");
     }
 }

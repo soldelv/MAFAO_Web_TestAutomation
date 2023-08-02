@@ -20,6 +20,8 @@ public class MafaoAPIs {
     private static final String listProducts = URL_STG+"meveo/rest/odooProductsAPI";
     private static final String listSimilarProducts = URL_STG+"meveo/rest/listSimilarProducts/";
     private static final String listAlerts = URL_STG+"meveo/rest/listAlerts";
+    private static final String userByID = URL_STG+"meveo/rest/odooSellerById/"+USER_ID;
+    private static final String listPurchases = URL_STG+"meveo/rest/purchases-by-wallet/"+WALLET_UUID;
 
 
     public static String login(String userName, String password) {
@@ -35,14 +37,13 @@ public class MafaoAPIs {
                 .addParameter("client_secret", "afe07e5a-68cb-4fb0-8b75-5b6053b07dc3")
                 .build();
 
-
             Gson gson = new Gson();
             CloseableHttpResponse response = httpclient.execute(httpget);
             String responseStr=otpCode = EntityUtils.toString(response.getEntity());
             JsonObject jsonObject = gson.fromJson(responseStr, JsonObject.class);
 
             // Print the access token
-            print(String.valueOf(jsonObject.get("access_token")));
+            print("access_token for api generated");
             return jsonObject.get("access_token").getAsString();
         }catch(Exception e){
             print(e.getMessage());
@@ -69,6 +70,30 @@ public class MafaoAPIs {
         }catch(Exception e){
             print(e.getMessage());
             return otpCode;
+        }
+    }
+
+    public static Seller getUserInfoByID() {
+        CloseableHttpClient httpclient = HttpClients.createDefault();
+        Seller sellerFound = null;
+        try{
+            HttpUriRequest httpget = RequestBuilder.get()
+                    .setUri(new URI(userByID))
+                    .addHeader("Authorization","Bearer "+login(FULL_MOBILE_NUMBER, SECRET_CODE))
+                    .build();
+
+            CloseableHttpResponse response = httpclient.execute(httpget);
+            String jsonString = EntityUtils.toString(response.getEntity());
+            Gson gson = new Gson();
+
+            JsonObject jsonObject = gson.fromJson(jsonString, JsonObject.class);
+            sellerFound = gson.fromJson(jsonObject, Seller .class);
+            print(String.valueOf(sellerFound));
+
+            return sellerFound;
+        }catch(Exception e){
+            print(e.getMessage());
+            return sellerFound;
         }
     }
 

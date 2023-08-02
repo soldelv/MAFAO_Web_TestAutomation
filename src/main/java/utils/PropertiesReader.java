@@ -60,11 +60,15 @@ public class PropertiesReader {
     public static String stgUserSecretCode(){
         return getStagingProperties().getProperty("secret_code");
     }
-
+    public static String stgUserID(){
+        return getStagingProperties().getProperty("user_id");
+    }
+    public static String getWalletUuid(){
+        return getStagingProperties().getProperty("wallet_uuid");
+    }
     public static String qaPaypalEmail(){
         return getStagingProperties().getProperty("paypal_email");
     }
-
     public static String qaPaypalPassword(){
         return getStagingProperties().getProperty("paypal_password");
     }

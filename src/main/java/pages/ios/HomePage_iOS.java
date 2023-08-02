@@ -35,16 +35,13 @@ public class HomePage_iOS extends BasePage_iOS {
 
     /** PRODUCTS */
     By listProductsFav = MobileBy.xpath("//android.view.ViewGroup[contains(@content-desc, 'favorite-button')]");
-    //By backIconBtn = MobileBy.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup[1]/android.widget.TextView");
-    By backIconBtn = MobileBy.AccessibilityId("\uF208");
     public void tapOnBackIcon(){
         print("Before tap back icon");
-        tap(backIconBtn);
+        tapOnBackBtn();
         print("already tap on back icon");
-        //getFistElement(backIconBtn).click();
     }
     public boolean checkOnMarketplace(){
-        return isDisplayed(getElement(searchBar));
+        return isDisplayed(searchBar);
     }
 
     public void tapOnHome()  {
@@ -89,7 +86,7 @@ public class HomePage_iOS extends BasePage_iOS {
 
     public void tapOnProduct(String productName){
         By product = MobileBy.AccessibilityId("product-"+productName);
-        tap(getElement(product));
+        tap(product);
     }
 
     public boolean checkProductsAreListed(String keyword){
@@ -122,10 +119,6 @@ public class HomePage_iOS extends BasePage_iOS {
     public boolean checkCategoryProductsAreDisplayed(){
         By products = MobileBy.xpath("//XCUIElementTypeOther[contains(@name,'product-')]");
         return isDisplayed(products);
-    }
-
-    public void goBackBtn(){
-        tap(backIconBtn);
     }
 
 }

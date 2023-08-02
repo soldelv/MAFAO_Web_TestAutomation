@@ -5,11 +5,13 @@ import factory.iOSDriverFactory;
 import io.appium.java_client.AppiumDriver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import org.junit.Test;
 
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 
 import static Constants.Constants.ENVIRONMENT;
+import static apis.MafaoAPIs.getUserInfoByID;
 import static utils.CommonMethods.print;
 
 public class HooksSteps {

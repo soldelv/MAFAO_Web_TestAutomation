@@ -16,11 +16,12 @@ Feature: Favorites features on Mobile Application | iOS Environment
       |  product_name  |
       |  Baby clothes  |
 
-    Scenario Outline: FAVORITES | Create and remove an Alert
+  Scenario Outline: FAVORITES | Create and remove an Alert
     Given the user is on marketplace screen
     When the user searches for <keyword> on the searchbar
     And products related to product <keyword> are displayed
     And taps on create an alert
+    And alert created button is displayed
     And goes to favorite section
     And taps on Alerts
     Then <keyword> alert is displayed

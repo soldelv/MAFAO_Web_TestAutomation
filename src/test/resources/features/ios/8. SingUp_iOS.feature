@@ -1,1 +1,0 @@
-Feature: Sign Up features on Mobile Application | iOS Environment

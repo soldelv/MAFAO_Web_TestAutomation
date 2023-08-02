@@ -7,6 +7,11 @@ Feature: Profile features on Mobile Application | iOS Environment
     And enters a valid secret code and taps on confirm
     Then the user is logged in on MAFAO mobile application
 
+  Scenario: PROFILE | View Display Name and Profile Photo
+    Given user goes to profile screen
+    When display name shows correctly
+    Then profile picture is displayed correctly
+
   Scenario: PROFILE | Notifications
     Given user goes to profile screen
     When taps on notifications

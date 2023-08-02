@@ -6,6 +6,7 @@ import io.appium.java_client.MobileBy;
 import org.openqa.selenium.By;
 
 import static Constants.Constants.*;
+import static org.testng.AssertJUnit.fail;
 import static utils.CommonMethods.holdOn;
 import static utils.CommonMethods.print;
 
@@ -24,12 +25,12 @@ public class LoginPage_iOS extends BasePage_iOS {
     By submitBtn = MobileBy.AccessibilityId("btn-submit");
     By confirmLoginBtn = MobileBy.AccessibilityId("confirm-login-button");
     By profileIcon = MobileBy.AccessibilityId("profile");
-    By errorLogin = MobileBy.xpath("//*[@text='You entered an invalid pincode. Please try again.']");
-
+    By errorLogin_invalidPincode = MobileBy.xpath("//XCUIElementTypeStaticText[@name='You entered an invalid pincode. Please try again.']");
+    By errorLogin_ResetMessage = MobileBy.AccessibilityId("We apologize, but you have entered the wrong PIN code three times, and your account has been disabled. Please reset your PIN code to proceed.");
     By forgotPincodeBtn = MobileBy.AccessibilityId("forgot-pin");
 
     /** KEY PATH LOCATORS **/
-    By keypathDelete = MobileBy.AccessibilityId("keypad-delete");
+    By keypadDelete = MobileBy.AccessibilityId("keypad-delete");
     By deleteBtn = MobileBy.AccessibilityId("Delete");
 
     public void tapOnLoginBtn()  {
@@ -39,10 +40,11 @@ public class LoginPage_iOS extends BasePage_iOS {
 
     public boolean checkIsOnLoginScreen() {
         holdOn(1000);
-        return isDisplayed(getElement(countryFlagIcon));
+        return isDisplayed(countryFlagIcon);
     }
 
     public void tapOnFlagIcon(){
+        waitUntilIsDisplayed(countryFlagIcon);
         tap(countryFlagIcon);
     }
 
@@ -69,8 +71,8 @@ public class LoginPage_iOS extends BasePage_iOS {
         type("1", phoneOTPInput);
         tap(deleteBtn);
         typeFromKeyboard("", otpCode);
-        tap(getElement(submitBtn));
-        tap(getElement(submitBtn));
+        tap(submitBtn);
+        tap(submitBtn);
     }
 
     public void enterSecretCode(String secretCode) {
@@ -79,11 +81,15 @@ public class LoginPage_iOS extends BasePage_iOS {
     }
 
     public boolean checkSuccessLogin() {
-        return isDisplayed(getElement(profileIcon));
+        if(isDisplayed(errorLogin_invalidPincode)){
+            fail("Error login: Invalid pincode");
+        }
+        waitUntilIsDisplayed(profileIcon);
+        return isDisplayed(profileIcon);
     }
 
     public boolean getErrorLoginMsg() {
-        return isDisplayed(getElement(errorLogin));
+        return isDisplayed(errorLogin_invalidPincode);
     }
     public void tapOnForgotPincode() {
         tap(forgotPincodeBtn);
@@ -95,7 +101,7 @@ public class LoginPage_iOS extends BasePage_iOS {
 
     public boolean checkLoggedOutSuccessfully() {
         holdOn(1000);
-        return isDisplayed(getElement(loginBtn));
+        return isDisplayed(loginBtn);
     }
 
     public void checkIfIsAlreadyLoggedIn() throws Exception {
