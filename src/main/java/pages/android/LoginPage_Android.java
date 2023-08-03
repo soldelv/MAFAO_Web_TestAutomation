@@ -67,7 +67,7 @@ public class LoginPage_Android extends BasePage_Android {
         Thread.sleep(1000);
         String full_mobileNumber = countryCode+mobileNumber;
         print(full_mobileNumber);
-        String otpCode = MafaoAPIs.getOTPCode(full_mobileNumber);
+        String otpCode = MafaoAPIs.getAPIOTPCode(full_mobileNumber);
         Thread.sleep(1500);
         print("OTP CODE "+otpCode);
         type(otpCode, phoneOTPInput);

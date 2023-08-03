@@ -51,31 +51,12 @@ public class OrderLines {
         return "OrderLines{" +
                 "product=" + product +
                 ", quantity='" + quantity + '\'' +
-                ", purchaseOrderId=" + purchaseOrderId +
+                ", total_price='" + total_price + '\'' +
+                ", purchaseOrderId='" + purchaseOrderId + '\'' +
+                ", isReceived='" + isReceived + '\'' +
+                ", unit_price='" + unit_price + '\'' +
+                ", uuid='" + uuid + '\'' +
+                ", status=" + status +
                 '}';
     }
-
-
-        /*
-          {
-            "order_lines": [
-                {
-                    "product": {
-                        "description_sale": "Team payaman shirts from philippines",
-                        "id": 179,
-                        "list_price": 950.0,
-                        "display_name": "TP assorted shirts",
-
-                    },
-                    "quantity": 1,
-                    "total_price": 950.0,
-                    "purchaseOrderId": "b9a5f6c5-fffc-48e7-af00-e296f1fe7782",
-                    "isReceived": false,
-                    "unit_price": 950.0,
-                    "uuid": "ebc173a6-3502-4534-88ef-2859965bad71",
-                    "status": "new"
-                }
-            ],
-        },
-     */
 }

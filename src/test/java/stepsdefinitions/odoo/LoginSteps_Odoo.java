@@ -8,7 +8,7 @@ import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 import pages.odoo.LoginPage_Odoo;
 
-import static Constants.Constants.*;
+import static constants.Constants.*;
 
 public class LoginSteps_Odoo {
     private LoginPage_Odoo loginPage;

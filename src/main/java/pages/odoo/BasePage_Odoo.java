@@ -8,8 +8,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-import static Constants.Constants.DIRECTORY_IMAGES;
-import static Constants.Constants.EXPLICIT_WAIT;
+import static constants.Constants.DIRECTORY_IMAGES;
+import static constants.Constants.EXPLICIT_WAIT;
 import static utils.CommonMethods.holdOn;
 import static utils.CommonMethods.print;
 

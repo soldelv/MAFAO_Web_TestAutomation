@@ -6,7 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.odoo.HomePage_Odoo;
 
-import static Constants.Constants.ODOO_URL_STG;
+import static constants.Constants.ODOO_URL_STG;
 import static org.junit.Assert.assertEquals;
 
 public class HomeSteps_Odoo {

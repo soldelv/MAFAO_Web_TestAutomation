@@ -9,7 +9,7 @@ import org.openqa.selenium.StaleElementReferenceException;
 
 import java.util.List;
 
-import static apis.MafaoAPIs.getAlertsQuantity;
+import static apis.MafaoAPIs.getAPIAlertsQuantity;
 import static utils.CommonMethods.print;
 
 public class FavoritesPage_iOS extends BasePage_iOS {
@@ -52,7 +52,7 @@ public class FavoritesPage_iOS extends BasePage_iOS {
     }
 
     public void tapOnAlerts(){
-        By alertBtn = MobileBy.AccessibilityId("Alerts ("+getAlertsQuantity()+")");
+        By alertBtn = MobileBy.AccessibilityId("Alerts ("+ getAPIAlertsQuantity()+")");
         tap(alertBtn);
     }
 

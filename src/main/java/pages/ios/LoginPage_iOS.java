@@ -5,7 +5,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import org.openqa.selenium.By;
 
-import static Constants.Constants.*;
+import static constants.Constants.*;
 import static org.testng.AssertJUnit.fail;
 import static utils.CommonMethods.holdOn;
 import static utils.CommonMethods.print;
@@ -66,7 +66,7 @@ public class LoginPage_iOS extends BasePage_iOS {
 
     public void enterOTPCode(String countryCode, String mobileNumber) throws Exception {
         String full_mobileNumber = countryCode+mobileNumber;
-        String otpCode = MafaoAPIs.getOTPCode(full_mobileNumber);
+        String otpCode = MafaoAPIs.getAPIOTPCode(full_mobileNumber);
         print("OTP CODE "+otpCode);
         type("1", phoneOTPInput);
         tap(deleteBtn);

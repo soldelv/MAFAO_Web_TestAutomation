@@ -6,8 +6,8 @@ import org.openqa.selenium.By;
 
 import java.util.Objects;
 
-import static Constants.Constants.SECRET_CODE;
-import static apis.MafaoAPIs.getUserInfoByID;
+import static constants.Constants.SECRET_CODE;
+import static apis.MafaoAPIs.getAPIUserInfoByID;
 import static org.testng.AssertJUnit.fail;
 import static utils.CommonMethods.*;
 
@@ -182,12 +182,12 @@ public class ProfilePage_iOs extends BasePage_iOS{
     }
 
     public boolean checkDisplayedName(){
-        By display_name = MobileBy.xpath("//XCUIElementTypeStaticText[@name='"+getUserInfoByID().getDisplay_name()+"']");
+        By display_name = MobileBy.xpath("//XCUIElementTypeStaticText[@name='"+ getAPIUserInfoByID().getDisplay_name()+"']");
         return isDisplayed(display_name);
     }
 
     public boolean checkProfilePicture(){
-        By profile_picture = MobileBy.xpath("//XCUIElementTypeOther[@name=\"\uF148 Bonus Balance view-balance-button ****** Compagnon "+getUserInfoByID().getDisplay_name()+" Total points 2120 pts Next goal Mentor 5000 pts\"]/XCUIElementTypeOther[4]");
+        By profile_picture = MobileBy.xpath("//XCUIElementTypeOther[@name=\"\uF148 Bonus Balance view-balance-button ****** Compagnon "+ getAPIUserInfoByID().getDisplay_name()+" Total points 2120 pts Next goal Mentor 5000 pts\"]/XCUIElementTypeOther[4]");
         return isDisplayed(profile_picture);
     }
 }

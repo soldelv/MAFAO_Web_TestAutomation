@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Assertions;
 import pages.ios.LoginPage_iOS;
 import stepsdefinitions.HooksSteps;
 
-import static Constants.Constants.*;
+import static constants.Constants.*;
 import static org.junit.Assert.assertTrue;
 import static utils.CommonMethods.holdOn;
 import static utils.CommonMethods.print;

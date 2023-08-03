@@ -7,8 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 
-import static Constants.Constants.PAYPAL_EMAIL;
-import static Constants.Constants.PAYPAL_PASSWORD;
+import static constants.Constants.PAYPAL_EMAIL;
+import static constants.Constants.PAYPAL_PASSWORD;
 import static utils.CommonMethods.holdOn;
 import static utils.CommonMethods.print;
 
