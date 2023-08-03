@@ -12,7 +12,8 @@ import org.apache.http.util.EntityUtils;
 import java.net.URI;
 import java.util.Objects;
 
-import static Constants.Constants.*;
+import static constants.Constants.*;
+import static utils.CommonMethods.parseToJsonObject;
 import static utils.CommonMethods.print;
 
 public class MafaoAPIs {
@@ -51,7 +52,7 @@ public class MafaoAPIs {
         }
     }
 
-    public static String getOTPCode(String mobileNumber) throws Exception {
+    public static String getAPIOTPCode(String mobileNumber) throws Exception {
         CloseableHttpClient httpclient = HttpClients.createDefault();
         String otpCode = "";
 
@@ -73,7 +74,7 @@ public class MafaoAPIs {
         }
     }
 
-    public static Seller getUserInfoByID() {
+    public static Seller getAPIUserInfoByID() {
         CloseableHttpClient httpclient = HttpClients.createDefault();
         Seller sellerFound = null;
         try{
@@ -83,11 +84,8 @@ public class MafaoAPIs {
                     .build();
 
             CloseableHttpResponse response = httpclient.execute(httpget);
-            String jsonString = EntityUtils.toString(response.getEntity());
             Gson gson = new Gson();
-
-            JsonObject jsonObject = gson.fromJson(jsonString, JsonObject.class);
-            sellerFound = gson.fromJson(jsonObject, Seller .class);
+            sellerFound = gson.fromJson(parseToJsonObject(response), Seller .class);
             print(String.valueOf(sellerFound));
 
             return sellerFound;
@@ -97,7 +95,7 @@ public class MafaoAPIs {
         }
     }
 
-    public static Product getProductInfoByName(String productName) {
+    public static Product getAPIProductInfoByName(String productName) {
         CloseableHttpClient httpclient = HttpClients.createDefault();
         Product productFound = null;
         try{
@@ -108,12 +106,9 @@ public class MafaoAPIs {
                     .build();
 
             CloseableHttpResponse response = httpclient.execute(httpget);
-            String jsonString = EntityUtils.toString(response.getEntity());
             Gson gson = new Gson();
 
-            JsonObject jsonObject = gson.fromJson(jsonString, JsonObject.class);
-
-            JsonArray productsArray = jsonObject.getAsJsonArray("rows");
+            JsonArray productsArray = parseToJsonObject(response).getAsJsonArray("rows");
             Product[]  products = gson.fromJson(productsArray, Product[] .class);
 
             for (Product product : products) {
@@ -127,7 +122,7 @@ public class MafaoAPIs {
             return productFound;
         }
     }
-    public static Product[] getSimilarProductsById(String productId) {
+    public static Product[] getAPISimilarProductsById(String productId) {
         CloseableHttpClient httpclient = HttpClients.createDefault();
         try{
             HttpUriRequest httpget = RequestBuilder.get()
@@ -136,12 +131,9 @@ public class MafaoAPIs {
                     .build();
 
             CloseableHttpResponse response = httpclient.execute(httpget);
-            String jsonString = EntityUtils.toString(response.getEntity());
             Gson gson = new Gson();
 
-            JsonObject jsonObject = gson.fromJson(jsonString, JsonObject.class);
-
-            JsonArray productsArray = jsonObject.getAsJsonArray("rows");
+            JsonArray productsArray = parseToJsonObject(response).getAsJsonArray("rows");
             Product[]  products = gson.fromJson(productsArray, Product[] .class);
 
             if(products.length>0){
@@ -156,7 +148,7 @@ public class MafaoAPIs {
         }
     }
 
-    public static String getAlertsQuantity() {
+    public static String getAPIAlertsQuantity() {
         CloseableHttpClient httpclient = HttpClients.createDefault();
         String alertsQuantity = "";
         try{
@@ -170,9 +162,6 @@ public class MafaoAPIs {
 
             Alert[] alerts = new Gson().fromJson(jsonString, Alert[].class);
 
-            /*for (Alert alert : alerts) {
-                System.out.println("Id: " + alert.getAlertId() + ", name: " + alert.getName());
-            }*/
             alertsQuantity = String.valueOf(alerts.length);
 
             return alertsQuantity;
@@ -180,6 +169,32 @@ public class MafaoAPIs {
             print(e.getMessage());
             return alertsQuantity;
         }
+    }
+
+    public static Order[] getAPIPurchasesBySeller() {
+
+        CloseableHttpClient httpclient = HttpClients.createDefault();
+        try{
+            HttpUriRequest httpget = RequestBuilder.get()
+                    .setUri(new URI(listPurchases))
+                    .addHeader("Authorization","Bearer "+login(FULL_MOBILE_NUMBER, SECRET_CODE))
+                    .build();
+
+            CloseableHttpResponse response = httpclient.execute(httpget);
+            Gson gson = new Gson();
+            JsonArray ordersArray = parseToJsonObject(response).getAsJsonArray("result");
+            Order[] orders = gson.fromJson(ordersArray, Order[] .class);
+
+            return orders;
+
+        }catch(Exception e){
+            print(e.getMessage());
+            return null;
+        }
+    }
+
+    public static Order getAPILastOrderBySeller(){
+        return getAPIPurchasesBySeller()[0];
     }
 
 }

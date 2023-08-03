@@ -1,5 +1,11 @@
 package utils;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.util.EntityUtils;
+
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -20,6 +26,18 @@ public class CommonMethods {
         } catch (InterruptedException e) {
             print(e.getMessage());
             throw new RuntimeException(e);
+        }
+    }
+
+    public static JsonObject parseToJsonObject(CloseableHttpResponse response){
+        try{
+        String jsonString = EntityUtils.toString(response.getEntity());
+        Gson gson = new Gson();
+            return gson.fromJson(jsonString, JsonObject.class);
+
+        }catch(Exception e){
+            print(e.getMessage());
+            return null;
         }
     }
 

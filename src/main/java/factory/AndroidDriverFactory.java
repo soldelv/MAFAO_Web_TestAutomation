@@ -8,7 +8,7 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import static Constants.Constants.*;
+import static constants.Constants.*;
 
 public class AndroidDriverFactory {
 

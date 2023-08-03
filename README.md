@@ -33,7 +33,7 @@ Reusable templates and structure
 
 Use the command below to clone the repository to your local directory
 
-`git clone https://github.com/newstartao/qa-ios-test`
+`git clone https://github.com/newstartao/mafao-qa-test-automation.git`
 
 
 ## Resources

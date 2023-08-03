@@ -5,10 +5,8 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import org.openqa.selenium.By;
 
-import java.util.Objects;
-
-import static apis.MafaoAPIs.getProductInfoByName;
-import static apis.MafaoAPIs.getSimilarProductsById;
+import static apis.MafaoAPIs.getAPIProductInfoByName;
+import static apis.MafaoAPIs.getAPISimilarProductsById;
 import static org.testng.AssertJUnit.fail;
 import static utils.CommonMethods.*;
 
@@ -55,7 +53,7 @@ public class ProductPage_iOS extends BasePage_iOS {
         holdOn(500);
     }
     public void tapOnAddToCart(String productName){
-        By addToCartBtn = MobileBy.AccessibilityId("Add to cart Amount: "+getProductInfoByName(productName).getFormattedListPrice()+" Fcfa");
+        By addToCartBtn = MobileBy.AccessibilityId("Add to cart Amount: "+ getAPIProductInfoByName(productName).getFormattedListPrice()+" Fcfa");
         tap(addToCartBtn);
         print("Tapped on Add to cart");
         holdOn(500);
@@ -95,7 +93,7 @@ public class ProductPage_iOS extends BasePage_iOS {
     }
 
     public void checkProductDetailView(String productName){
-        Product productInfo = getProductInfoByName(productName);
+        Product productInfo = getAPIProductInfoByName(productName);
         By productTitle = MobileBy.xpath("//XCUIElementTypeStaticText[@name='"+productName+"']");
         By productDescription = MobileBy.xpath("//XCUIElementTypeStaticText[@name='"+productInfo.getDescription_sale()+"']");
         By inStock = MobileBy.xpath("//XCUIElementTypeStaticText[@name='In stock']");
@@ -160,8 +158,8 @@ public class ProductPage_iOS extends BasePage_iOS {
     }
 
     public void checkSimilarProductsAreDisplayed(String productName){
-        int productId = getProductInfoByName(productName).getId();
-        Product[] similarProductsList = getSimilarProductsById(String.valueOf(productId));
+        int productId = getAPIProductInfoByName(productName).getId();
+        Product[] similarProductsList = getAPISimilarProductsById(String.valueOf(productId));
 
         for (Product product : similarProductsList) {
             By locator = MobileBy.xpath("(//XCUIElementTypeOther[@name='product-"+product.getDisplay_name()+"'])[2]");
