@@ -1,6 +1,7 @@
 package mafao.objects;
 
 import static apis.MafaoAPIs.getAPIProductInfoByID;
+import static database.ProductQuery.getProductDetailById;
 import static utils.CommonMethods.print;
 
 public class OrderLines {
@@ -69,7 +70,7 @@ public class OrderLines {
     }
     public void setProductByID(String productId) {
         if(productId!=null){
-            Product toTestProduct = getAPIProductInfoByID(Integer.parseInt(productId));
+            Product toTestProduct = getProductDetailById(Integer.parseInt(productId));
             if(toTestProduct!=null){
                 this.product = toTestProduct;
             }

@@ -65,6 +65,31 @@ public class ProductQuery {
         return productQuery;
     }
 
+    public static Product getProductDetailById(int id)  {
+        Product productQuery = new Product();
+
+        try{
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+            Connection connection = databaseConnection.openConnection();
+
+            String query = "SELECT * FROM product_template WHERE id = "+id;
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                productQuery = parseResultSetToProduct(resultSet);
+            }
+
+            resultSet.close();
+            statement.close();
+            databaseConnection.closeConnection();
+
+        }catch(SQLException e){
+            fail("DATABASE ERROR: Not possible to perform query");
+
+        }
+        return productQuery;
+    }
+
     public static List<Product> getPublishedProducts()  {
         List<Product> productList = new ArrayList<>();
 
