@@ -100,4 +100,15 @@ public class PropertiesReader {
         return getStagingProperties().getProperty("admin_password");
     }
 
+    /** DATABASE ODOO */
+    public static String getOdooDB_URL_Stg() {
+        return getStagingProperties().getProperty("ODOO_DB_URL");
+    }
+    public static String getOdooDB_Username_Stg() {
+        return getStagingProperties().getProperty("ODOO_DB_USERNAME");
+    }
+    public static String getOdooDB_Password_Stg() {
+        return getStagingProperties().getProperty("ODOO_DB_PASSWORD");
+    }
+
 }

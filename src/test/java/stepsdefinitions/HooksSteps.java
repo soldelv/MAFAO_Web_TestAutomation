@@ -11,7 +11,9 @@ import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 
 import static constants.Constants.ENVIRONMENT;
-import static apis.MafaoAPIs.*;
+import static database.OrderQuery.getSaleOrder;
+import static database.OrderQuery.getSaleOrderLine;
+import static org.testng.AssertJUnit.fail;
 import static utils.CommonMethods.print;
 
 public class HooksSteps {
@@ -25,6 +27,11 @@ public class HooksSteps {
             default -> print("Invalid environment name");
         }
     }
+
+    /* @Test
+    public void testeo(){
+        getSaleOrder();
+    }*/
 
     @After
     public void driverTearDown(){
