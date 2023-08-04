@@ -93,4 +93,15 @@ public class CommonMethods {
             return null;
         }
     }
+
+    public static boolean parseStringToBoolean(String value){
+        if(value=="f"){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+
 }

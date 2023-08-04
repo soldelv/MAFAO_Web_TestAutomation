@@ -1,4 +1,4 @@
-package apis;
+package mafao.objects;
 
 public class Seller {
     private int id;

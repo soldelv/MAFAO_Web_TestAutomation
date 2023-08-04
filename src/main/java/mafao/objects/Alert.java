@@ -1,6 +1,6 @@
-package apis;
+package mafao.objects;
 
-class Alert {
+public class Alert {
 
     private String alertId;
     private String name;

@@ -2,6 +2,10 @@ package apis;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import mafao.objects.Alert;
+import mafao.objects.Order;
+import mafao.objects.Product;
+import mafao.objects.Seller;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.methods.RequestBuilder;
@@ -113,6 +117,34 @@ public class MafaoAPIs {
 
             for (Product product : products) {
                 if(Objects.equals(product.getDisplay_name(), productName)){
+                    productFound = product;
+                }
+            }
+            return productFound;
+        }catch(Exception e){
+            print(e.getMessage());
+            return productFound;
+        }
+    }
+
+    public static Product getAPIProductInfoByID(int productId) {
+        CloseableHttpClient httpclient = HttpClients.createDefault();
+        Product productFound = null;
+        try{
+            HttpUriRequest httpget = RequestBuilder.get()
+                    .setUri(new URI(listProducts))
+                    .addHeader("Authorization","Bearer "+login(FULL_MOBILE_NUMBER, SECRET_CODE))
+                    .addParameter("currentPage", "1")
+                    .build();
+
+            CloseableHttpResponse response = httpclient.execute(httpget);
+            Gson gson = new Gson();
+
+            JsonArray productsArray = parseToJsonObject(response).getAsJsonArray("rows");
+            Product[]  products = gson.fromJson(productsArray, Product[] .class);
+
+            for (Product product : products) {
+                if(Objects.equals(product.getId(), productId)){
                     productFound = product;
                 }
             }

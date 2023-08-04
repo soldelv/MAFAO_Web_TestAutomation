@@ -2,9 +2,11 @@
   <dictionary name="mac">
     <words>
       <w>auchan</w>
+      <w>jips</w>
       <w>keyloack</w>
       <w>mafao</w>
       <w>multipod</w>
+      <w>postgre</w>
     </words>
   </dictionary>
 </component>
