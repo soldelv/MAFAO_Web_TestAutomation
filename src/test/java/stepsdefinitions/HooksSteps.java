@@ -28,11 +28,6 @@ public class HooksSteps {
         }
     }
 
-    /* @Test
-    public void testeo(){
-        getSaleOrder();
-    }*/
-
     @After
     public void driverTearDown(){
         if (null != driver) {
