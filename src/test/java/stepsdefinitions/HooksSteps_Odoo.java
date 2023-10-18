@@ -5,7 +5,7 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import org.openqa.selenium.WebDriver;
-import stepsdefinitions.odoo.TestContext;
+import stepsdefinitions.TestContext;
 
 import static utils.CommonMethods.print;
 
@@ -17,14 +17,14 @@ public class HooksSteps_Odoo {
         this.context = context;
     }
 
-    //@Before
+    @Before
     public void driverSetUp(Scenario scenario){
         webDriver = DriverFactory.initializeDriver();
         context.driver = webDriver;
         print("Webdriver for Odoo initialized");
     }
 
-    //@After
+    @After
     public void driverTearDown(Scenario scenario){
         webDriver.close();
         webDriver.quit();
