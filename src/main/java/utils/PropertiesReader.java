@@ -89,7 +89,7 @@ public class PropertiesReader {
 
     /** ODOO PROPERTIES **/
     public static String getOdooUrl_Stg() {
-        return getStagingProperties().getProperty("odoo_url");
+        return getStagingProperties().getProperty("odoo_url_stg");
     }
 
     public static String getAdminEmail_Stg() {

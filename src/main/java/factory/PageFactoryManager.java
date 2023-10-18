@@ -1,10 +1,10 @@
 package factory;
 
 import org.openqa.selenium.WebDriver;
-import pages.odoo.HomePage_Odoo;
-import pages.odoo.LoginPage_Odoo;
-import pages.odoo.NewProductPage;
-import pages.odoo.SellerDashboardPage;
+import pages.HomePage_Odoo;
+import pages.LoginPage_Odoo;
+import pages.NewProductPage;
+import pages.SellerDashboardPage;
 
 public class PageFactoryManager {
     private static HomePage_Odoo homePage;
