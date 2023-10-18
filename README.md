@@ -2,7 +2,7 @@
 # JIPS_TestAutomation for Odoo
 
 ## Project Overview
-Test Automation Framework for MAFAO Mobile and WEB Applications with Appium, Java, JUnit and Maven, BDD with Cucumber and Page Object Model design pattern
+Test Automation Framework for JIPS WEB Applications with Java, JUnit and Maven, BDD with Cucumber and Page Object Model design pattern
 Reusable templates and structure
 
 ## Tech Stack
