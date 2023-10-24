@@ -1,5 +1,5 @@
 
-# JIPS_TestAutomation for Odoo
+# TestAutomation for Web
 
 ## Project Overview
 Test Automation Framework for JIPS WEB Applications with Java, JUnit and Maven, BDD with Cucumber and Page Object Model design pattern
@@ -24,7 +24,7 @@ Reusable templates and structure
 
 Use the command below to clone the repository to your local directory
 
-`git clone https://github.com/newstartao/qa-odoo-test.git`
+`git clone https://github.com/newstartao/Marketplace_Web_TestAutomation.git`
 
 
 ## Resources
